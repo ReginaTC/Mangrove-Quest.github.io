@@ -4,6 +4,17 @@ import { pages } from './content.js'
 const contentArea = document.querySelector('#content-area');
 const navLinks = document.querySelectorAll('#nav-list a');
 
+const BASE_URL = import.meta.env.BASE_URL;
+
+function resolvePath(path) {
+  if (typeof path !== 'string') return path;
+  if (path.startsWith('/') && !path.startsWith('//')) {
+    // Vite base already includes trailing slash, e.g., /subpath/
+    return BASE_URL + path.substring(1);
+  }
+  return path;
+}
+
 function renderPage(pageId) {
   const page = pages[pageId] || pages.home;
   
@@ -12,7 +23,7 @@ function renderPage(pageId) {
   const heroHtml = `
     <section class="${heroClass}">
       <div class="hero-overlay"></div>
-      <img src="${page.heroImage}" alt="${page.heroTitle}" style="position: absolute; width:100%; height:100%; object-fit:cover;">
+      <img src="${resolvePath(page.heroImage)}" alt="${page.heroTitle}" style="position: absolute; width:100%; height:100%; object-fit:cover;">
       <div class="hero-content">
         <h1>${page.heroTitle}</h1>
         <p style="font-size: 1.5rem; color: var(--mangrove-mint);">${page.heroSubtitle}</p>
@@ -26,9 +37,11 @@ function renderPage(pageId) {
   if (page.fullScreen) containerClass = 'container full-screen';
   else if (page.wide) containerClass = 'container wide';
   
+  const finalContent = page.content.replace(/src="\/assets\//g, `src="${BASE_URL}assets/`);
+  
   const contentHtml = `
     <div class="${containerClass}">
-      ${page.content}
+      ${finalContent}
     </div>
     ${page.fullScreen ? '' : `
       <footer>
