@@ -7,29 +7,58 @@
     <title>Mangrove Quest - Environmental Course</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@400;500;600&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header id="top-nav">
+    <div class="grain-overlay"></div>
+    <a href="#home" id="site-logo">
+      <div class="logo">Mangrove<span>Quest</span></div>
+    </a>
+
+    <header id="top-nav" class="nav-hidden">
       <div class="nav-container">
-        <div class="logo">Mangrove<span>Quest</span></div>
         <nav>
           <ul id="nav-list">
-            <li><a href="#home" class="active" data-page="home">1. Basic Info</a></li>
-            <li><a href="#lead-in" data-page="lead-in">2. Lead-in</a></li>
-            <li><a href="#activity1" data-page="activity1">3.1 Act 1</a></li>
-            <li><a href="#activity2" data-page="activity2">3.2 Act 2</a></li>
-            <li><a href="#activity3-1" data-page="activity3-1">3.3.1 Act 3.1</a></li>
-            <li><a href="#activity3-2" data-page="activity3-2">3.3.2 Act 3.2</a></li>
-            <li><a href="#activity4" data-page="activity4">3.4 Act 4</a></li>
-            <li><a href="#activity5" data-page="activity5">3.5 Act 5</a></li>
-            <li><a href="#activity6" data-page="activity6">3.6 Act 6</a></li>
-            <li><a href="#rubric" data-page="rubric">4. Rubric</a></li>
-            <li><a href="#reflection" data-page="reflection">5. Reflection</a></li>
+            <li class="nav-item">
+              <a href="#home" data-page="home">Basic Information</a>
+            </li>
+            
+            <li class="nav-item has-sub">
+              <div class="nav-group-header" id="act-toggle">
+                <span>Study Activities</span>
+                <span class="chevron">▾</span>
+              </div>
+              <ul class="nav-sub-list" id="act-sub-list">
+                <li><a href="#lead-in" data-page="lead-in">Lead-in</a></li>
+                <li><a href="#activity1" data-page="activity1">Activity 1</a></li>
+                <li><a href="#activity2" data-page="activity2">Activity 2</a></li>
+                <li><a href="#activity3-1" data-page="activity3-1">Activity 3.1</a></li>
+                <li><a href="#activity3-2" data-page="activity3-2">Activity 3.2</a></li>
+                <li><a href="#activity4" data-page="activity4">Activity 4</a></li>
+                <li><a href="#activity5" data-page="activity5">Activity 5.1</a></li>
+                <li><a href="#activity6" data-page="activity6">Activity 5.2</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#rubric" data-page="rubric">Evaluation Rubrics</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#reflection" data-page="reflection">Reflection</a>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
+
+    <button id="nav-toggle" aria-label="Toggle Navigation">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
     
     <div id="app">
       <main id="content-area">

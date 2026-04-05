@@ -3,6 +3,14 @@ import { pages } from './content.js'
 
 const contentArea = document.querySelector('#content-area');
 const navLinks = document.querySelectorAll('#nav-list a');
+const topNav = document.querySelector('#top-nav');
+const navToggle = document.querySelector('#nav-toggle');
+
+// Activity Menu Toggle
+const actToggle = document.getElementById('act-toggle');
+const actItem = actToggle ? actToggle.closest('.nav-item') : null;
+
+const PAGE_ORDER = ['home', 'lead-in', 'activity1', 'activity2', 'activity3-1', 'activity3-2', 'activity4', 'activity5', 'activity6', 'rubric', 'reflection'];
 
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -19,16 +27,32 @@ function renderPage(pageId) {
   const page = pages[pageId] || pages.home;
   
   // Create hero section
-  const heroClass = page.fullHeight ? 'hero full-height' : 'hero';
+  const isHome = pageId === 'home' || !pageId;
+  const heroClass = isHome ? (page.fullHeight ? 'hero full-height' : 'hero') : 'hero subpage';
+  
+  if (isHome) {
+    document.body.classList.remove('is-subpage');
+  } else {
+    document.body.classList.add('is-subpage');
+  }
+  
   const heroHtml = `
     <section class="${heroClass}">
-      <div class="hero-overlay"></div>
-      <img src="${resolvePath(page.heroImage)}" alt="${page.heroTitle}" style="position: absolute; width:100%; height:100%; object-fit:cover;">
-      <div class="hero-content">
-        <h1>${page.heroTitle}</h1>
-        <p style="font-size: 1.5rem; color: var(--mangrove-mint);">${page.heroSubtitle}</p>
-      </div>
-      ${page.showArrow ? '<div class="scroll-arrow" id="scroll-to-content">↓</div>' : ''}
+      ${isHome ? `
+        <div class="hero-overlay"></div>
+        <img src="${resolvePath(page.heroImage)}" alt="${page.heroTitle}" style="position: absolute; width:100%; height:100%; object-fit:cover;">
+        <div class="hero-content">
+          <h1>${page.heroTitle}</h1>
+          <p style="font-size: 1.5rem; color: var(--mangrove-mint);">${page.heroSubtitle}</p>
+        </div>
+        ${page.showArrow ? '<div class="scroll-arrow" id="scroll-to-content">↓</div>' : ''}
+      ` : `
+        <div class="subpage-header-container">
+          <h1 class="subpage-header-title">${page.heroTitle}</h1>
+          <span class="subpage-header-divider"></span>
+          <p class="subpage-header-subtitle">${page.heroSubtitle}</p>
+        </div>
+      `}
     </section>
   `;
   
@@ -37,11 +61,36 @@ function renderPage(pageId) {
   if (page.fullScreen) containerClass = 'container full-screen';
   else if (page.wide) containerClass = 'container wide';
   
-  const finalContent = page.content.replace(/src="\/assets\//g, `src="${BASE_URL}assets/`);
+  const finalContent = page.content.replace(/\/assets\//g, resolvePath('/assets/'));
   
+  const currentIndex = PAGE_ORDER.indexOf(pageId);
+  const nextPageId = currentIndex < PAGE_ORDER.length - 1 ? PAGE_ORDER[currentIndex + 1] : null;
+  const nextPage = nextPageId ? pages[nextPageId] : null;
+  
+  const prevPageId = currentIndex > 0 ? PAGE_ORDER[currentIndex - 1] : null;
+  const prevPage = prevPageId ? pages[prevPageId] : null;
+
   const contentHtml = `
     <div class="${containerClass}">
       ${finalContent}
+      
+      ${(nextPage || prevPage) ? `
+        <div class="next-task-container" style="justify-content: ${!prevPage ? 'flex-end' : (!nextPage ? 'flex-start' : 'space-between')}">
+          ${prevPage ? `
+            <a href="#${prevPageId}" class="last-activity-btn">
+              <div class="next-task-arrow" style="transform: rotate(180deg)">→</div>
+              <span>${prevPageId === 'home' ? 'Back Home' : `Last: ${prevPage.heroTitle}`}</span>
+            </a>
+          ` : ''}
+          
+          ${nextPage ? `
+            <a href="#${nextPageId}" class="next-task-btn">
+              <span>${isHome ? 'Start to Learn' : `Next: ${nextPage.heroTitle}`}</span>
+              <div class="next-task-arrow">→</div>
+            </a>
+          ` : ''}
+        </div>
+      ` : ''}
     </div>
     ${page.fullScreen ? '' : `
       <footer>
@@ -51,7 +100,9 @@ function renderPage(pageId) {
             ZHONG Tong • JIANG Xieni • LYU Dingyi • LIU Xianmin • YU Fengming
           </div>
           <div class="credits-attribution">
-            <span><strong>Instructor:</strong> Chai ChingSing</span>
+            <span class="attribution-role"><strong>Instructor</strong></span>
+            <span class="attribution-person">Prof. Chai ChingSing</span>
+            <span class="attribution-person">Gao Lei</span>
             <span class="attribution-divider">|</span>
             <span>Chinese University of Hong Kong</span>
           </div>
@@ -92,13 +143,43 @@ function renderPage(pageId) {
     // Let's keep overflow auto but the container itself is clipped.
     document.body.style.overflowY = 'auto'; 
   } else {
-  // Handle Page Specific Initializations
-  if (pageId === 'activity2') {
-    initActivity2();
+  if (pageId === 'lead-in') {
+    initLeadIn();
   }
-  if (pageId === 'activity5') {
-    initActivity5();
-  }
+}
+
+function initLeadIn() {
+  const revealBtn = document.getElementById('reveal-dyk-btn');
+  const dykGroup = document.getElementById('dyk-group');
+  
+  if (!revealBtn || !dykGroup) return;
+  
+  revealBtn.addEventListener('click', () => {
+    dykGroup.classList.remove('dyk-card-hidden');
+    dykGroup.classList.add('dyk-card-visible');
+    
+    // Smooth scroll to the card group
+    setTimeout(() => {
+      dykGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+    
+    // Optionally change button text or hide it
+    revealBtn.innerHTML = '<span>Answer Revealed</span> <i>✨</i>';
+    revealBtn.style.opacity = '0.5';
+    revealBtn.style.pointerEvents = 'none';
+  });
+}
+
+function syncActivity31FullscreenButton() {
+  const btn = document.getElementById('activity31-fullscreen-btn');
+  const target = document.getElementById('activity31-fullscreen-target');
+  if (!btn || !target) return;
+
+  const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+  const isFullscreen = fullscreenElement === target;
+
+  btn.textContent = isFullscreen ? 'Exit Fullscreen' : 'Fullscreen';
+  btn.setAttribute('aria-label', isFullscreen ? 'Exit fullscreen mode' : 'Enter fullscreen mode');
 }
 
 function initActivity2() {
@@ -199,12 +280,21 @@ function initActivity5() {
   }
   
   navLinks.forEach(link => {
-    link.classList.toggle('active', link.dataset.page === pageId);
+    const isActive = link.getAttribute('href') === `#${pageId}`;
+    link.classList.toggle('active', isActive);
+    
+    // Auto-expand activity group if an activity is active
+    if (isActive && link.closest('#act-sub-list')) {
+      actItem?.classList.add('expanded');
+    }
   });
-  
-  // Reset scroll and trigger reveal
+
+  // Reset scroll
   window.scrollTo(0, 0);
-  setTimeout(initReveal, 100);
+
+  // Close nav on navigation
+  topNav.classList.add('nav-hidden');
+  navToggle.classList.remove('active');
 }
 
 function initActivity6() {
@@ -308,21 +398,6 @@ function initActivity6() {
 }
   
 
-function initReveal() {
-  const reveals = document.querySelectorAll('.reveal');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  reveals.forEach(reveal => {
-    observer.observe(reveal);
-  });
-}
 
 // Handle routing
 function handleRoute() {
@@ -331,7 +406,31 @@ function handleRoute() {
 }
 
 window.addEventListener('hashchange', handleRoute);
-window.addEventListener('load', handleRoute);
+window.addEventListener('load', () => {
+  handleRoute();
+  // Start with nav hidden for clean editorial look
+  topNav.classList.add('nav-hidden');
+});
+
+// Navigation Toggle Logic
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  topNav.classList.toggle('nav-hidden');
+});
+
+// Activity Sub-menu Logic
+actToggle?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  actItem?.classList.toggle('expanded');
+});
+
+// Close nav when clicking outside on mobile or tablet
+document.addEventListener('click', (e) => {
+  if (!topNav.contains(e.target) && !navToggle.contains(e.target)) {
+    topNav.classList.add('nav-hidden');
+    navToggle.classList.remove('active');
+  }
+});
 
 // Dynamic Hero Background Effect (Subtle movement)
 contentArea.addEventListener('mousemove', (e) => {
@@ -342,3 +441,35 @@ contentArea.addEventListener('mousemove', (e) => {
     heroImg.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
   }
 });
+
+contentArea.addEventListener('click', async (e) => {
+  const btn = e.target.closest('#activity31-fullscreen-btn');
+  if (!btn) return;
+
+  const target = document.getElementById('activity31-fullscreen-target');
+  if (!target) return;
+
+  try {
+    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+    const isFullscreen = fullscreenElement === target;
+
+    if (isFullscreen) {
+      if (document.exitFullscreen) {
+        await document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    } else if (target.requestFullscreen) {
+      await target.requestFullscreen();
+    } else if (target.webkitRequestFullscreen) {
+      target.webkitRequestFullscreen();
+    }
+  } catch (error) {
+    console.error('Native fullscreen failed for Activity 3.1:', error);
+  } finally {
+    syncActivity31FullscreenButton();
+  }
+});
+
+document.addEventListener('fullscreenchange', syncActivity31FullscreenButton);
+document.addEventListener('webkitfullscreenchange', syncActivity31FullscreenButton);

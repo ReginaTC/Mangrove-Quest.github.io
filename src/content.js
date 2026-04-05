@@ -5,12 +5,12 @@ export const pages = {
     heroSubtitle: "Explore the Hidden Wonders of the Coastal Forest",
     heroImage: "/assets/mangrove-hero.png",
     content: `
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Introductory Note</h2>
         <p>This website is designed to create a self‑directed learning experience that integrates mangrove ecosystem knowledge with gamified experiences and offline practice. Through problem‑based research, AI‑assisted study, and interactive games, students will explore the mangrove environment, including the interdependent relationships between its animals and plants and the ecological challenges it faces.</p>
         <p style="margin-top:1rem;">Combining online learning with fieldwork at a local mangrove park, the course guides students to apply their knowledge by designing a micro-ecosystem bottle and creating an E-poster. This process aims to develop students' abilities in information gathering, hands‑on practice, teamwork, and autonomous learning, while fostering ecological awareness and a sense of environmental citizenship.</p>
       </div>
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Course Details</h2>
         <ul style="list-style: none;">
           <li><strong>Subject:</strong> Science</li>
@@ -19,7 +19,7 @@ export const pages = {
           <li><strong>Lesson Duration:</strong> 8 Class Periods</li>
         </ul>
       </div>
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Learner Analysis</h2>
         <h3 style="margin: 1rem 0 0.5rem 0; color: var(--mangrove-accent);">1. Cognitive Foundation</h3>
         <p>Students have learned primary school science and basic Grade 7 biology/geography, with preliminary understanding of climate, ecology, environment, and land-sea distribution. They are able to conduct simple observation and comparison, with basic analytical skills. Thinking is mainly concrete, while abstract thinking is emerging.</p>
@@ -33,7 +33,7 @@ export const pages = {
         <h3 style="margin: 1rem 0 0.5rem 0; color: var(--mangrove-accent);">4. Alignment with Curriculum Standards</h3>
         <p>This interdisciplinary, inquiry-based, practical, and locally rooted curriculum highlights human-earth coordination, fully meeting the needs of core literacy development for Grade 7 students.</p>
       </div>
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Lesson Objectives</h2>
         <p>By the end of the lessons, students will be able to:</p>
         <ul style="margin-top: 1rem; margin-left: 1.5rem;">
@@ -46,7 +46,7 @@ export const pages = {
           <li>Defend their design in a simulated environmental hearing, reflect on their learning journey, and demonstrate enhanced ecological citizenship.</li>
         </ul>
       </div>
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Group Members</h2>
         <ul style="list-style: none;">
           <li>ZHONG Tong (1155252981)</li>
@@ -60,62 +60,102 @@ export const pages = {
   },
   'lead-in': {
     title: "2. Lead-in",
-    heroTitle: "The Breathing Forest",
-    heroSubtitle: "Discover why the 'Red Forest' is actually green",
+    heroTitle: "Lead-in",
+    heroSubtitle: "The Breathing Forest",
     heroImage: "/assets/lead-in.png",
     content: `
-      <div class="card glass reveal">
-        <h2>The Breathing Forest</h2>
-        <p>Do you know that along the coastline of Shenzhen Bay, there is a "breathing" forest?</p>
-        <p style="margin-top:1rem;">These forests take root in the intertidal zone with strong vitality. They serve as an ecological bridge between land and sea, provide shelter for countless creatures, and act as a vital "green kidney" for this busy city.</p>
-        <p style="margin-top:1rem;">This is the mangrove forest — a natural wonder that plays an essential role in our ecosystem.</p>
-        <p style="margin-top:1rem;">Today, let's step closer and explore these amazing coastal guardians.</p>
+      <div class="editorial-card">
+        <div class="editorial-image" style="background-image: url('/assets/mangrove_intro_card.jpg');">
+          <div class="editorial-gradient"></div>
+        </div>
+        <div class="editorial-content">
+          <h2>The Breathing Forest</h2>
+          <p>Do you know that along the coastline of Shenzhen Bay, there is a "breathing" forest?</p>
+          <p>These forests take root in the intertidal zone with strong vitality. They serve as an ecological bridge between land and sea, providing shelter for countless creatures.</p>
+          <p>This is the mangrove forest — a natural wonder that acts as a vital "green kidney" for our busy city.</p>
+          <p>Today, let's step closer and explore these amazing coastal guardians.</p>
+        </div>
       </div>
       
-      <div class="card glass reveal" style="border-left: 4px solid var(--mangrove-accent);">
+      <div class="card glass" style="border-left: 4px solid var(--mangrove-accent);">
         <h2>🤔 THINK</h2>
-        <p style="font-size: 1.2rem; font-weight: 600; color: var(--mangrove-mint);">Why are these green forests called mangroves (which means "red forest" in Chinese)?</p>
+        <p style="font-size: 1.2rem; font-weight: 600; color: #000000;">Why are these green forests called mangroves (which means "red forest" in Chinese)?</p>
+        <button class="reveal-dyk-btn" id="reveal-dyk-btn">
+          <span>Discover the Answer</span>
+          <i>✨</i>
+        </button>
       </div>
 
-      <div class="card glass reveal">
-        <h2>💡 Did You Know?</h2>
-        <p>When an apple is cut open, the flesh will gradually turn brown. This is because the apple contains tannin, which oxidizes when exposed to air and causes the discoloration.</p>
-        <p style="margin-top:1rem;">The content of tannin in mangrove plants is extremely high, so they will turn dark red when injured, hence the name "red forest".</p>
-        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(58, 125, 113, 0.2); border-radius: 12px; text-align: center;">
-          <p style="font-style: italic; margin-bottom: 1rem;">Actually, there are many secrets hidden in the mangrove forest, which you need to explore and discover by yourselves.</p>
-          <h3 style="color: #ffffff; letter-spacing: 2px;">📢 LET'S START YOUR MANGROVE QUEST!</h3>
+      <!-- Do You Know & Call to Action (Initially Hidden Group) -->
+      <div id="dyk-group" class="dyk-card-hidden">
+        <!-- Card 1: The Answer -->
+        <div class="card glass" id="dyk-card" style="margin-bottom: 2rem;">
+          <h2>💡 Do You Know?</h2>
+          <div class="dyk-text-top">
+            <p>When an apple is cut open, the flesh will gradually turn brown. This is because the apple contains <strong>tannin</strong>, which oxidizes when exposed to air.</p>
+            <p style="margin-top:1.2rem;">The content of tannin in mangrove plants is extremely high—this is their natural defense. When injured, they turn <strong>dark red</strong> as the tannin oxidizes, making the tree appear to "bleed".</p>
+            <p style="margin-top:1rem;">This striking red reaction is exactly why they are named <strong>"Red Forest"</strong> (Mangroves).</p>
+          </div>
+
+          <div class="dyk-gallery">
+            <div class="dyk-image-box">
+              <img src="/assets/did_you_know_apple.png" alt="Apple Oxidation">
+              <div class="dyk-label">Apple Oxidation (10 mins)</div>
+            </div>
+            <div class="dyk-image-box">
+              <img src="/assets/did_you_know_tree.png" alt="Mangrove Tannin">
+              <div class="dyk-label">Mangrove "Bleeding" Tannin</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: The Call to Action -->
+        <div class="card glass" style="text-align: center; border-top: 4px solid var(--mangrove-gold); padding: 3rem;">
+          <p style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted);">Actually, there are many secrets hidden in the mangrove forest, which you need to explore and discover by yourselves.</p>
+          <h3 style="color: var(--mangrove-deep); letter-spacing: 2px; font-size: 1.8rem; margin: 0;">📢 LET'S START YOUR MANGROVE QUEST!</h3>
         </div>
       </div>
     `
   },
   activity1: {
     title: "3.1 Activity 1: Knowledge Hunt",
-    heroTitle: "AI Research",
-    heroSubtitle: "Using technology to explore nature",
+    heroTitle: "Activity 1",
+    heroSubtitle: "Knowledge Hunt: AI Research",
     heroImage: "/assets/activity1.png",
     content: `
       <div class="centered-content" style="text-align: center;">
-        <div class="guide-speech reveal">
+        <div class="guide-speech">
           Get ready to dive into the amazing mangrove world!
         </div>
 
-        <div class="card glass reveal">
+        <div class="card glass">
           <h2>🤔 Think & Watch</h2>
-          <p style="margin-bottom: 1.5rem;">Watch this exciting video and think about these questions as you go:</p>
-          <ul style="margin-left: 1.5rem; text-align: left;">
-            <li>What plants and animals live here? What do they look like?</li>
-            <li>How do they survive in salty water, mud, and changing tides?</li>
-            <li>What connections exist between plants and animals? Who helps whom?</li>
-            <li>What problems do mangroves face? What do humans do?</li>
-            <li>Why are mangroves so important?</li>
-          </ul>
+          <p>Watch this exciting video and think about these questions as you go:</p>
+          
+          <div class="bubble-container">
+            <div class="question-bubble">
+              <div class="question-bubble-text">What plants and animals live here? What do they look like?</div>
+            </div>
+            <div class="question-bubble">
+              <div class="question-bubble-text">How do they survive in salty water, mud, and changing tides?</div>
+            </div>
+            <div class="question-bubble">
+              <div class="question-bubble-text">What connections exist between plants and animals? Who helps whom?</div>
+            </div>
+            <div class="question-bubble">
+              <div class="question-bubble-text">What problems do mangroves face? What do humans do?</div>
+            </div>
+            <div class="question-bubble">
+              <div class="question-bubble-text">Why are mangroves so important?</div>
+            </div>
+          </div>
         </div>
 
-        <div class="guide-speech reveal">
+        <div class="guide-speech">
           Let's start! Click the video below ⬇️
         </div>
 
-        <div class="video-player-wrap reveal">
+        <div class="video-player-wrap">
           <div class="video-container">
             <iframe 
               src="https://www.youtube.com/embed/OWlHyKQCh5Q" 
@@ -128,7 +168,7 @@ export const pages = {
           After watching, share your most curious new questions in the discussion forum!
         </p>
 
-        <div class="card glass reveal">
+        <div class="card glass">
           <h2>Discussion Forum</h2>
           <div class="padlet-container">
             <iframe
@@ -141,25 +181,21 @@ export const pages = {
           </div>
         </div>
 
-        <div class="guide-speech reveal">
+        <div class="guide-speech">
           Ask the AI Assistant if you want to explore deeper!
         </div>
 
-        <div class="ai-interactive-layout reveal">
-          <div class="ai-iframe-container">
-            <iframe
-              src="https://www.chatbase.co/chatbot-iframe/Dffwd61dvQ7oqb59QonhA"
-              width="100%"
-              height="100%"
-              frameborder="0"
-            ></iframe>
-          </div>
-
-          <div class="examples-column" style="text-align: left;">
-            <h3 style="margin-bottom: 1.5rem; color: var(--mangrove-accent);">Example Questions:</h3>
-            <div class="example-bubble">Why do mangroves grow in salty water?</div>
-            <div class="example-bubble">What animals live in mangrove forests?</div>
-            <div class="example-bubble">How do mangroves protect the coastline?</div>
+        <div class="card glass">
+          <h2>Mangrove Quest AI Guide</h2>
+          <div class="ai-interactive-layout" style="display: block;">
+            <div class="ai-iframe-container">
+              <iframe
+                src="https://www.chatbase.co/chatbot-iframe/Dffwd61dvQ7oqb59QonhA"
+                width="100%"
+                height="100%"
+                frameborder="0"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -167,16 +203,16 @@ export const pages = {
   },
   activity2: {
     title: "3.2 Activity 2: Role-playing Game",
-    heroTitle: "Roles of the Forest",
-    heroSubtitle: "Step into the shoes of the mangrove inhabitants",
+    heroTitle: "Activity 2",
+    heroSubtitle: "Role-playing Game: Roles of the Forest",
     heroImage: "/assets/activity2.png",
     content: `
       <div class="centered-content" style="text-align: center;">
-        <div class="guide-speech reveal">
+        <div class="guide-speech">
           This 14-minute video shows the exciting "dinner time" in mangroves – so lively!
         </div>
 
-        <div class="video-player-wrap reveal">
+        <div class="video-player-wrap">
           <div class="video-container">
             <iframe
               src="https://www.youtube.com/embed/m4xhZ6v2eN8"
@@ -185,12 +221,13 @@ export const pages = {
           </div>
         </div>
 
-        <div class="guide-speech reveal" style="margin: 3rem auto 2rem auto;">
-          Your group creative challenge ⬇️
+        <div class="guide-speech" style="margin: 3rem auto 2rem auto;">
+          Your group creative challenge ⬇️<br />
+          Work with your group to create a short, fun voice-over for one mangrove clip.
         </div>
 
-        <div class="two-column-layout reveal">
-          <div class="column-glass">
+        <div class="two-column-layout">
+          <div class="column-glass bubble-list-card">
             <h3>Super Flexible Styles:</h3>
             <ul>
               <li>Classic narration (like a nature documentary host explaining what’s happening)</li>
@@ -199,7 +236,7 @@ export const pages = {
             </ul>
           </div>
 
-          <div class="column-glass">
+          <div class="column-glass bubble-list-card">
             <h3>Quick Steps:</h3>
             <ul>
               <li>Watch together (mute OK) and note interesting parts + timestamps.</li>
@@ -211,51 +248,63 @@ export const pages = {
           </div>
         </div>
 
-        <div class="upload-section reveal">
+        <div class="upload-section">
           <h3 style="color: var(--mangrove-accent); margin-bottom: 1.5rem;">Mangrove Quest - Upload your video</h3>
-          <!-- EZ File Drop Embed Form -->
-          <div class="ezfd-embed-form">
-            <div data-form-uuid="4550c09c-c02f-458a-b952-045d6998a8f0" data-options="" class="ezfd-form"></div>
-            <script type="text/javascript" src="//app.ezfiledrop.com/js/embed-form.js"></script>
+          <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
+            <p style="padding:0;margin:0">
+              <iframe src="https://padlet.com/embed/51wc4j5atj0tn5um" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe>
+            </p>
+            <div style="display:flex;align-items:center;justify-content:end;margin:0;padding:8px 8px 8px 0">
+              <a href="https://padlet.com?ref=embed" style="display:flex;align-items:center;gap:5px;flex-grow:0;margin:0;border:none;padding:0;text-decoration:none" target="_blank">
+                <span aria-hidden style="color:#9E9E9E;font-size:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1">Made with</span>
+                <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0;margin:0;background:0 0;border:none;box-shadow:none;display:block" alt="Padlet 上的创作">
+              </a>
+            </div>
           </div>
-          <!-- /EZ File Drop Embed Form -->
+          <p class="reveal" style="font-style: italic; color: #000; margin: 2rem 0 0 0; font-size: 1.1rem;">
+            After uploading, feel free to share in the discussion:<br />
+            Which animal did you choose?<br />
+            What made your narration fun or special?
+          </p>
         </div>
-
-        <p class="reveal" style="font-style: italic; color: var(--mangrove-mint); margin: 3rem 0; font-size: 1.1rem;">
-          After uploading, feel free to share in the discussion: Which animal did you choose? What made your narration fun or special?
-        </p>
       </div>
     `
   },
   'activity3-1': {
     title: "3.3.1 Activity 3.1: Field Expedition",
-    heroTitle: "Nature's Playground",
-    heroSubtitle: "Preparing for our Shenzhen Bay adventure",
+    heroTitle: "Activity 3.1",
+    heroSubtitle: "Field Expedition: Nature's Playground",
     heroImage: "/assets/activity3-1.png",
     fullHeight: true,
     showArrow: true,
     fullScreen: true,
     content: `
-      <div class="card glass reveal" style="padding: 0; overflow: hidden;">
-        <iframe
-          src="https://6rzr9888rn.coze.site/"
-          style="width: 100%; height: 100%; border: none;"
-          allow="microphone; camera; geolocation"
-        ></iframe>
+      <div class="card glass activity31-card">
+        <div id="activity31-fullscreen-target" class="activity31-frame-shell">
+          <button id="activity31-fullscreen-btn" class="iframe-fullscreen-btn" type="button" aria-label="Enter fullscreen mode">
+            Fullscreen
+          </button>
+          <iframe
+            src="https://6rzr9888rn.coze.site/"
+            style="width: 100%; height: 100%; border: none;"
+            allow="microphone; camera; geolocation; fullscreen"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     `
   },
   'activity3-2': {
     title: "3.3.2 Activity 3.2: Concept Map",
-    heroTitle: "Mapping Connections",
-    heroSubtitle: "Synthesize your findings with visual maps",
+    heroTitle: "Activity 3.2",
+    heroSubtitle: "Concept Map: Mapping Connections",
     heroImage: "/assets/activity3-2.png",
     content: `
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Concept Map Creation</h2>
-        <div class="two-column-layout">
-          <div style="flex: 1.2;">
-            <h3 style="color: var(--mangrove-mint); margin-bottom: 1rem;">Background & Task</h3>
+        <div class="two-column-layout activity32-layout">
+          <div class="activity32-text">
+            <h3 style="color: var(--mangrove-deep); margin-bottom: 1rem;">Background & Task</h3>
             <p>We have gained a basic understanding of the species related to mangroves after our initial study. Please work in small groups, combine the knowledge of ecosystems we have learned from the textbook (pages 85-88), and consult library materials to draw a concept map on the structure and function of ecosystems about mangrove.</p>
             
             <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
@@ -263,32 +312,37 @@ export const pages = {
               <li>You need to consider the ecological relationships between different animals as well as their relationships with the environment.</li>
             </ul>
 
-            <div class="requirement-box">
-              <h4>⏱️ Creation Requirements</h4>
-              <ul>
-                <li>You are given <strong>30 minutes</strong> for the creation of the initial concept map.</li>
-                <li>You need to have <strong>at least 5 elements</strong> in your concept map.</li>
-              </ul>
-            </div>
-
-            <h3 style="color: var(--mangrove-mint); margin-top: 2rem; margin-bottom: 1rem;">Submission & Peer Review</h3>
-            <ul style="padding-left: 1.5rem; list-style: circle;">
-              <li style="margin-bottom: 0.75rem;">Once completed, please upload it via <strong>Padlet</strong>.</li>
-              <li style="margin-bottom: 0.75rem;">We will then have an online discussion about the completeness and accuracy of each group's concept map.</li>
-              <li>Each group will revise their concept map based on the comments received.</li>
-            </ul>
           </div>
 
-          <div style="flex: 0.8;">
-            <div class="image-card">
+          <div class="activity32-media">
+            <div class="image-card activity32-example-card">
               <img src="https://drive.google.com/thumbnail?id=1EsjnzoRyxNOs5Ck4TLWg9iX8Ind35_m9&sz=w1000" alt="Concept Map Example">
               <div class="image-caption">Example Concept Map</div>
             </div>
-            
-            <div class="image-card">
-              <img src="https://drive.google.com/thumbnail?id=1MQRmEI_g2r5FZB6PptLZXXX9M1-XgNZU&sz=w1000" alt="Padlet Interface">
-              <div class="image-caption">Padlet Submission Board</div>
-            </div>
+          </div>
+        </div>
+
+        <div class="requirement-box activity32-requirement-box">
+          <h4>⏱️ Creation Requirements</h4>
+          <ul>
+            <li>You are given <strong>30 minutes</strong> for the creation of the initial concept map.</li>
+            <li>You need to have <strong>at least 5 elements</strong> in your concept map.</li>
+          </ul>
+        </div>
+
+        <div class="activity32-submission">
+          <h3 style="color: var(--mangrove-deep); margin-top: 1.6rem; margin-bottom: 1rem;">Submission & Peer Review</h3>
+          <ul style="padding-left: 1.5rem; list-style: circle;">
+            <li style="margin-bottom: 0.75rem;">Once completed, please upload it via <strong>Padlet</strong>.</li>
+            <li style="margin-bottom: 0.75rem;">We will then have an online discussion about the completeness and accuracy of each group's concept map.</li>
+            <li>Each group will revise their concept map based on the comments received.</li>
+          </ul>
+        </div>
+
+        <div class="activity32-padlet-wide">
+          <div class="activity32-padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
+            <p style="padding:0;margin:0"><iframe src="https://padlet.com/embed/p42uby60jk15ubsn" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe></p>
+            <div style="display:flex;align-items:center;justify-content:end;margin:0;padding:8px 8px 8px 0"><a href="https://padlet.com?ref=embed" style="display:flex;align-items:center;gap:5px;flex-grow:0;margin:0;border:none;padding:0;text-decoration:none" target="_blank"><span aria-hidden style="color:#9E9E9E;font-size:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1">Made with</span><img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0;margin:0;background:0 0;border:none;box-shadow:none;display:block" alt="Padlet 上的创作"></a></div>
           </div>
         </div>
       </div>
@@ -296,25 +350,25 @@ export const pages = {
   },
   activity4: {
     title: "3.4 Activity 4: Coastal Guardians",
-    heroTitle: "Field Investigation",
-    heroSubtitle: "Exploring the Mangrove Ecological Park",
+    heroTitle: "Activity 4",
+    heroSubtitle: "Coastal Guardians: Field Investigation",
     heroImage: "/assets/activity4.png",
     content: `
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Investigation Overview</h2>
-        <div class="two-column-layout">
-          <div style="flex: 1;">
-            <h3 style="color: var(--mangrove-mint); margin-bottom: 1.5rem;">Investigation Tasks</h3>
-            <ul style="padding-left: 1.5rem; margin-bottom: 2rem;">
-              <li style="margin-bottom: 1rem; line-height: 1.6;">Work in groups and each group should arrange the division of labor by themselves.</li>
-              <li style="margin-bottom: 1rem; line-height: 1.6;">Use the map independently, determine the route based on the destination - <strong>Mangrove Science and Culture Museum</strong> and set up environmental data collection points to provide environmental data support for the production of ecological bottles.</li>
-              <li style="margin-bottom: 1rem; line-height: 1.6;">Take photos of the environmental pollution and invasive species encountered on the route and mark their positions on the map. After returning to school, pin the photos at the corresponding positions.</li>
-              <li style="line-height: 1.6;">Visit the Mangrove Science and Culture Museum at the end of the route and make records of the relevant knowledge.</li>
+        <div class="two-column-layout activity4-overview-layout">
+          <div class="activity4-overview-text">
+            <h3 style="color: var(--mangrove-deep); margin-bottom: 1rem;">Investigation Tasks</h3>
+            <ul style="padding-left: 1.35rem; margin-bottom: 1rem;">
+              <li style="margin-bottom: 0.65rem; line-height: 1.45;">Work in groups and each group should arrange the division of labor by themselves.</li>
+              <li style="margin-bottom: 0.65rem; line-height: 1.45;">Use the map independently, determine the route based on the destination - <strong>Mangrove Science and Culture Museum</strong> and set up environmental data collection points to provide environmental data support for the production of ecological bottles.</li>
+              <li style="margin-bottom: 0.65rem; line-height: 1.45;">Take photos of the environmental pollution and invasive species encountered on the route and mark their positions on the map. After returning to school, pin the photos at the corresponding positions.</li>
+              <li style="line-height: 1.45;">Visit the Mangrove Science and Culture Museum at the end of the route and make records of the relevant knowledge.</li>
             </ul>
           </div>
           
-          <div style="flex: 1.2;">
-            <div class="image-card">
+          <div class="activity4-overview-media">
+            <div class="image-card activity4-map-card">
               <img src="https://drive.google.com/thumbnail?id=1qB5dxWTrKEgFPZUWd18k3UqWgZ3LY1sG&sz=w1000" alt="Mangrove Floor Plan">
               <div class="image-caption">Floor Plan & Route Map</div>
             </div>
@@ -324,7 +378,7 @@ export const pages = {
           </div>
         </div>
 
-        <div class="safety-warning reveal">
+        <div class="safety-warning">
           <h3>⚠️ Safety Instructions</h3>
           <div class="safety-grid">
             <div class="safety-item">
@@ -368,12 +422,12 @@ export const pages = {
     `
   },
   activity5: {
-    title: "3.5 Activity 5: Micro-Ecosystem",
-    heroTitle: "Micro-Ecosystem Project",
-    heroSubtitle: "Design and Observe Your Own Mangrove World",
+    title: "3.5 Activity 5.1: Micro-Ecosystem",
+    heroTitle: "Activity 5.1",
+    heroSubtitle: "Micro-Ecosystem Project",
     heroImage: "/assets/activity5.png",
     content: `
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Project Phase 1: Design & Setup</h2>
         <div class="two-column-layout">
           <div style="flex: 1.2;">
@@ -393,7 +447,7 @@ export const pages = {
           </div>
         </div>
 
-        <div class="legal-warning reveal">
+        <div class="legal-warning">
           <h3>⚠️ Legal and Sampling Reminder</h3>
           <ul>
             <li>Inside the Futian mangrove reserve, no one may dig sediment, pick plants, catch wildlife, or collect specimens without authorization.</li>
@@ -402,7 +456,7 @@ export const pages = {
           </ul>
         </div>
 
-        <div class="two-column-layout reveal">
+        <div class="two-column-layout">
           <div style="flex: 1.2;">
             <h3 style="color: var(--mangrove-mint); margin-bottom: 1rem;">Discussion & Presentation Prompts</h3>
             <ul style="padding-left: 1.5rem;">
@@ -431,12 +485,12 @@ export const pages = {
     `
   },
   activity6: {
-    title: "3.6 Activity 6: Environmental Hearing",
-    heroTitle: "Environmental Hearing",
-    heroSubtitle: "Present and Defend Your Conservation Research",
+    title: "3.6 Activity 5.2: Environmental Hearing",
+    heroTitle: "Activity 5.2",
+    heroSubtitle: "Environmental Hearing",
     heroImage: "/assets/activity6.png",
     content: `
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Phase 2: Research & E-Poster</h2>
         <div class="description-bar">
           <p>
@@ -449,7 +503,7 @@ export const pages = {
           </ul>
         </div>
 
-        <div class="two-column-layout reveal">
+        <div class="two-column-layout">
           <div style="flex: 1;">
             <h3 class="column-title">Uploaded Files Area</h3>
             <div class="upload-area" id="activity6-drop-zone">
@@ -478,11 +532,12 @@ export const pages = {
   },
   rubric: {
     title: "4. Evaluation Rubric",
-    heroTitle: "Evaluation Rubrics",
-    heroSubtitle: "A 5-level scale for evaluating ecosystem mastery",
+    heroTitle: "Evaluation",
+    heroSubtitle: "Evaluation Rubrics",
     heroImage: "/assets/rubric.png",
+    wide: true,
     content: `
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Assessment Framework</h2>
         <p style="margin-bottom: 2rem; opacity: 0.9; line-height: 1.6;">
           This assessment rubric is designed for evaluating students’ performance across learning activities. A 5-level scale is used to assess how well students understand the mangrove ecosystem, identify real-world issues, and communicate evidence-based ideas and solutions.
@@ -579,18 +634,18 @@ export const pages = {
   },
   reflection: {
     title: "5. Post Lesson Reflection",
-    heroTitle: "Post Lesson Reflection",
-    heroSubtitle: "Consolidate your learning journey",
+    heroTitle: "Reflection",
+    heroSubtitle: "Post Lesson Reflection",
     heroImage: "/assets/reflection.png",
     content: `
-      <div class="card glass reveal">
+      <div class="card glass">
         <h2>Reflecting on Your Journey</h2>
         <p style="margin-bottom: 2rem; opacity: 0.9; line-height: 1.6;">
           It is important that we post lesson reflection to consolidate what we have learned, especially about the process we have gone through.
         </p>
         
         <div style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border);">
-          <ol style="padding-left: 1.5rem; color: var(--mangrove-mint);">
+          <ol style="padding-left: 1.5rem; color: #000000;">
             <li style="margin-bottom: 1.5rem; line-height: 1.6;">
               Throughout the entire project, which part was the most challenging for you? How did you deal with it, and what new understanding did this experience give you about yourself?
             </li>
