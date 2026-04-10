@@ -427,59 +427,84 @@ export const pages = {
     heroSubtitle: "Micro-Ecosystem Project",
     heroImage: "/assets/activity5.png",
     content: `
-      <div class="card glass">
-        <h2>Project Phase 1: Design & Setup</h2>
-        <div class="two-column-layout">
-          <div style="flex: 1.2;">
-            <h3 style="color: var(--mangrove-mint); margin-bottom: 1rem;">Task Description</h3>
-            <ul style="padding-left: 1.5rem;">
-              <li style="margin-bottom: 1rem; line-height: 1.6;">Design a mangrove micro-ecosystem bottle that can be observed stably for about 30 days and that demonstrates 2-3 key features of mangrove environments.</li>
-              <li style="margin-bottom: 1rem; line-height: 1.6;">Under legal and low-disturbance conditions, prioritize either "mangrove-themed materials" or "mangrove ecological substitute materials".</li>
-              <li style="margin-bottom: 1rem; line-height: 1.6;">Use continuous records to explain sedimentation, surface film formation, decomposition, evaporation, and salinity change inside the bottle.</li>
-              <li style="line-height: 1.6;">Record process and form a PPT on the changes of the micro-ecosystem bottle and your findings. Upload it to the web page and present in the class.</li>
+      <h2 class="activity5-phase-title">Project Phase 1: Design & Setup</h2>
+
+      <div class="card glass activity5-module">
+        <h3 style="color: #000; margin-bottom: 1rem;">Task Description</h3>
+        <ul style="padding-left: 1.5rem;">
+          <li style="margin-bottom: 1rem; line-height: 1.6;">Design a mangrove micro-ecosystem bottle that can be observed stably for about 30 days and that demonstrates 2-3 key features of mangrove environments.</li>
+          <li style="margin-bottom: 1rem; line-height: 1.6;">Under legal and low-disturbance conditions, prioritize either "mangrove-themed materials" or "mangrove ecological substitute materials".</li>
+          <li style="margin-bottom: 1rem; line-height: 1.6;">Use continuous records to explain sedimentation, surface film formation, decomposition, evaporation, and salinity change inside the bottle.</li>
+          <li style="line-height: 1.6;">Record process and form a PPT on the changes of the micro-ecosystem bottle and your findings. Upload it to the web page and present in the class.</li>
+        </ul>
+      </div>
+
+      <div class="card glass activity5-guide-block activity5-module">
+        <h3 style="color: #000; margin-bottom: 1rem;">Observation Guide</h3>
+        <div class="image-card" style="margin-top: 0;">
+          <img src="/assets/activity5.1.jpg" alt="Micro-Ecosystem Time-lapse Guide" style="height: auto; max-height: 560px; object-fit: contain; padding: 0;">
+          <div class="image-caption">Micro-Ecosystem Time-lapse Guide</div>
+        </div>
+        <div class="image-card" style="margin-top: 1rem;">
+          <img src="/assets/activity5.1-2" alt="Activity 5.1 Tips" style="height: auto; max-height: 560px; object-fit: contain; padding: 0;">
+          <div class="image-caption">Tips</div>
+        </div>
+      </div>
+
+      <div class="safety-warning activity5-module">
+        <h3>⚠️ Legal and Sampling Reminder</h3>
+        <div class="safety-grid">
+          <div class="safety-item">
+            <ul>
+              <li>Inside the Futian mangrove reserve, no one may dig sediment, pick plants, catch wildlife, or collect specimens without authorization.</li>
+              <li>Classroom materials should come mainly from legal nurseries, partner organizations, teaching samples, or aquarium supplies.</li>
+              <li>The basic version of the bottle should not center on wild animals and should not introduce live organisms of unknown origin.</li>
             </ul>
           </div>
-          <div style="flex: 0.8;">
-            <div class="image-card">
-              <img src="https://drive.google.com/thumbnail?id=12eq8-ox-ehM0mJNWqbwScPOxa8288p_9&sz=w1000" alt="Eco-Bottle Example">
-              <div class="image-caption">Eco-Bottle Example</div>
+        </div>
+      </div>
+
+      <div class="card glass activity5-section activity5-prompts activity5-module">
+        <h3 style="color: #000; margin-bottom: 1rem;">Discussion & Presentation Prompts</h3>
+        <div class="bubble-container">
+          <div class="question-bubble">
+            <div class="question-bubble-text">Which key environmental features of mangroves does your bottle simulate?</div>
+          </div>
+          <div class="question-bubble">
+            <div class="question-bubble-text">Why did your group choose these materials? Which are legally sourced?</div>
+          </div>
+          <div class="question-bubble">
+            <div class="question-bubble-text">What changes related to salinity or decomposition appear in your records?</div>
+          </div>
+          <div class="question-bubble">
+            <div class="question-bubble-text">How would you improve stability without increasing ecological disturbance?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card glass activity5-section activity5-module activity5-materials-shell">
+        <div class="two-column-layout activity5-materials-submission">
+        <div style="flex: 1;" class="activity5-materials">
+          <h3 style="color: #000; margin-bottom: 1rem;">Materials</h3>
+          <div class="activity5-material-zone">
+            <p class="activity5-materials-note">Choose one of the reference guides below before preparing your bottle and slides.</p>
+            <div class="activity5-material-btns">
+              <a href="https://docs.google.com/document/d/1bbfHCz7OabnNbDhTY8VleXl0fUPv0Aqz/edit?usp=drive_link" class="activity5-material-btn" target="_blank">Reference Material 1</a>
+              <a href="https://docs.google.com/document/d/1AY_x-lhBbrP5DRDwLPytSJ3fqsXnGvrQ/edit?usp=drive_link" class="activity5-material-btn" target="_blank">Reference Material 2</a>
             </div>
           </div>
         </div>
 
-        <div class="legal-warning">
-          <h3>⚠️ Legal and Sampling Reminder</h3>
-          <ul>
-            <li>Inside the Futian mangrove reserve, no one may dig sediment, pick plants, catch wildlife, or collect specimens without authorization.</li>
-            <li>Classroom materials should come mainly from legal nurseries, partner organizations, teaching samples, or aquarium supplies.</li>
-            <li>The basic version of the bottle should not center on wild animals and should not introduce live organisms of unknown origin.</li>
-          </ul>
+        <div style="flex: 1;" class="activity5-upload activity5-submission">
+          <h3 style="color: #000; margin-bottom: 1rem;">Submission</h3>
+          <div class="upload-zone" id="ppt-drop-zone">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📊</div>
+            <div class="upload-instruction" id="ppt-instruction">Upload your Presentation (PPT/PDF)</div>
+            <input type="file" id="ppt-input" accept=".ppt, .pptx, .pdf" style="display: none;">
+            <button class="action-btn" id="ppt-btn">Select File</button>
+            <div id="ppt-name-display"></div>
+          </div>
         </div>
-
-        <div class="two-column-layout">
-          <div style="flex: 1.2;">
-            <h3 style="color: var(--mangrove-mint); margin-bottom: 1rem;">Discussion & Presentation Prompts</h3>
-            <ul style="padding-left: 1.5rem;">
-              <li style="margin-bottom: 0.75rem;">Which key environmental features of mangroves does your bottle simulate?</li>
-              <li style="margin-bottom: 0.75rem;">Why did your group choose these materials? Which are legally sourced?</li>
-              <li style="margin-bottom: 0.75rem;">What changes related to salinity or decomposition appear in your records?</li>
-              <li>How would you improve stability without increasing ecological disturbance?</li>
-            </ul>
-          </div>
-          <div style="flex: 0.8;">
-            <h3 style="color: var(--mangrove-mint); margin-bottom: 1rem;">Materials & Submission</h3>
-            <div class="attachment-container">
-              <a href="https://docs.google.com/document/d/1bbfHCz7OabnNbDhTY8VleXl0fUPv0Aqz/edit?usp=drive_link" class="download-btn" target="_blank">📄 Ref Material 1</a>
-              <a href="https://docs.google.com/document/d/1AY_x-lhBbrP5DRDwLPytSJ3fqsXnGvrQ/edit?usp=drive_link" class="download-btn" target="_blank">📄 Ref Material 2</a>
-            </div>
-            <div class="upload-zone" id="ppt-drop-zone">
-              <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📊</div>
-              <div class="upload-instruction" id="ppt-instruction">Upload your Presentation (PPT/PDF)</div>
-              <input type="file" id="ppt-input" accept=".ppt, .pptx, .pdf" style="display: none;">
-              <button class="action-btn" id="ppt-btn">Select File</button>
-              <div id="ppt-name-display"></div>
-            </div>
-          </div>
         </div>
       </div>
     `
@@ -494,7 +519,7 @@ export const pages = {
         <h2>Phase 2: Research & E-Poster</h2>
         <div class="description-bar">
           <p>
-            <strong>TASK DESCRIPTION:</strong> Each group, based on the data and findings from the field investigation, selected a specific species (Mangroves, Algae, Fiddler crabs, Mudskippers, Chinese pond heron, Black-faced spoonbill, or Leopard cats) and conducted in-depth research on the main threats it faces.
+            <strong>TASK DESCRIPTION:</strong> <span style="color: #000;">Each group, based on the data and findings from the field investigation, selected a specific species (Mangroves, Algae, Fiddler crabs, Mudskippers, Chinese pond heron, Black-faced spoonbill, or Leopard cats) and conducted in-depth research on the main threats it faces.</span>
           </p>
           <ul>
             <li>Use libraries, the internet, and AI-assisted tools to investigate how pollution and invasive species disrupt ecosystem stability.</li>
