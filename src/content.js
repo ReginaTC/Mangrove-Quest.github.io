@@ -515,23 +515,25 @@ export const pages = {
     heroSubtitle: "Environmental Hearing",
     heroImage: "/assets/activity6.png",
     content: `
-      <div class="card glass">
-        <h2>Phase 2: Research & E-Poster</h2>
-        <div class="description-bar">
-          <p>
-            <strong>TASK DESCRIPTION:</strong> <span style="color: #000;">Each group, based on the data and findings from the field investigation, selected a specific species (Mangroves, Algae, Fiddler crabs, Mudskippers, Chinese pond heron, Black-faced spoonbill, or Leopard cats) and conducted in-depth research on the main threats it faces.</span>
-          </p>
-          <ul>
-            <li>Use libraries, the internet, and AI-assisted tools to investigate how pollution and invasive species disrupt ecosystem stability.</li>
-            <li>Design a comprehensive E-poster presenting your findings and proposed solutions.</li>
-            <li>Prepare for the simulated environmental hearing and peer review.</li>
-          </ul>
-        </div>
+      <h2 class="activity5-phase-title">Phase 2: Research & E-Poster</h2>
 
-        <div class="two-column-layout">
-          <div style="flex: 1;">
-            <h3 class="column-title">Uploaded Files Area</h3>
-            <div class="upload-area" id="activity6-drop-zone">
+      <div class="card glass activity5-module">
+        <h3 style="color: #000; margin-bottom: 1rem;">Task Description</h3>
+        <p style="color: #000; margin-bottom: 1rem; line-height: 1.7;">
+          Each group, based on the data and findings from the field investigation, selected a specific species (Mangroves, Algae, Fiddler crabs, Mudskippers, Chinese pond heron, Black-faced spoonbill, or Leopard cats) and conducted in-depth research on the main threats it faces.
+        </p>
+        <ul style="padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.75rem; line-height: 1.6;">Use libraries, the internet, and AI-assisted tools to investigate how pollution and invasive species disrupt ecosystem stability.</li>
+          <li style="margin-bottom: 0.75rem; line-height: 1.6;">Design a comprehensive E-poster presenting your findings and proposed solutions.</li>
+          <li style="line-height: 1.6;">Prepare for the simulated environmental hearing and peer review.</li>
+        </ul>
+      </div>
+
+      <div class="card glass activity5-section activity5-module activity5-materials-shell">
+        <div class="two-column-layout activity5-materials-submission">
+          <div style="flex: 1;" class="activity5-upload activity5-submission">
+            <h3 style="color: #000; margin-bottom: 1rem;">Submission</h3>
+            <div class="upload-zone" id="activity6-drop-zone">
               <div class="status-icon" id="a6-status-icon">📁</div>
               <div class="spinner" id="a6-loading-spinner" style="display: none;"></div>
               <div class="upload-text" id="a6-upload-text">Drag and drop your research files here<br>or click to browse</div>
@@ -539,18 +541,29 @@ export const pages = {
                 Document Ready:<br><span id="a6-file-name-display"></span>
               </div>
               <input type="file" id="a6-fileInput" style="display: none;">
-              <button class="smart-btn" id="a6-smart-btn">Select File</button>
+              <button class="action-btn" id="a6-smart-btn">Select File</button>
               <div class="result-msg" id="a6-result-msg" style="display: none;"></div>
             </div>
           </div>
-          
-          <div style="flex: 0.8;">
-            <h3 class="column-title">Example E-Poster</h3>
-            <div class="image-card" style="height: auto;">
-              <img src="/Users/reginaphalange/.gemini/antigravity/brain/ac8cb499-dc00-4399-88b7-acca8ef7c820/activity6_eposter_example_1773730188541.png" alt="Example E-poster" style="height: auto; max-height: 600px; object-fit: contain;">
-              <div class="image-caption">Sample Conservation Poster Layout</div>
+
+          <div style="flex: 1;" class="activity5-materials">
+            <h3 style="color: #000; margin-bottom: 1rem;">Example E-Poster</h3>
+            <div class="activity5-material-zone" style="border: 0; background: transparent; padding: 0;">
+              <div class="image-card poster-modal-trigger" data-poster-open tabindex="0" role="button" aria-label="Open full-screen poster" style="height: auto; margin-bottom: 0;">
+                <img src="/assets/Poster.jpg" alt="Example E-poster" style="height: auto; max-height: 600px; object-fit: contain;">
+                <div class="image-caption">Sample Conservation Poster Layout</div>
+              </div>
+              <p style="margin-top: 0.75rem; color: var(--text-muted); font-size: 0.92rem; text-align: right;">Source: Shenzhen Futian Mangrove Ecological Park</p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div id="activity6-poster-modal" class="poster-modal">
+        <div class="poster-modal-backdrop" data-poster-close aria-hidden="true"></div>
+        <div class="poster-modal-content">
+          <button type="button" class="poster-modal-close" data-poster-close aria-label="Close">×</button>
+          <img src="/assets/Poster.jpg" alt="Example E-poster full preview">
         </div>
       </div>
     `

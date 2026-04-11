@@ -277,6 +277,7 @@ function initActivity5() {
 }
   if (pageId === 'activity6') {
     initActivity6();
+    initPosterModal();
   }
   
   navLinks.forEach(link => {
@@ -395,6 +396,49 @@ function initActivity6() {
     smartBtn.textContent = "Try Again";
     smartBtn.classList.remove('btn-uploading');
   }
+}
+
+function initPosterModal() {
+  const modal = document.getElementById('activity6-poster-modal');
+  const openTrigger = document.querySelector('[data-poster-open]');
+  const closeTargets = document.querySelectorAll('[data-poster-close]');
+
+  if (!modal || !openTrigger || closeTargets.length === 0) return;
+
+  const openModal = () => {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+
+  openTrigger.onclick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openModal();
+  };
+
+  openTrigger.onkeydown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openModal();
+    }
+  };
+
+  closeTargets.forEach((node) => {
+    node.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeModal();
+    };
+  });
+
+  document.onkeydown = (e) => {
+    if (e.key === 'Escape') closeModal();
+  };
 }
   
 
