@@ -144,22 +144,119 @@ function initLeadIn() {
   const revealBtn = document.getElementById('reveal-dyk-btn');
   const dykGroup = document.getElementById('dyk-group');
 
-  if (!revealBtn || !dykGroup) return;
-  
-  revealBtn.addEventListener('click', () => {
-    dykGroup.classList.remove('dyk-card-hidden');
-    dykGroup.classList.add('dyk-card-visible');
-    
-    // Smooth scroll to the card group
-    setTimeout(() => {
-      dykGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 100);
-    
-    // Optionally change button text or hide it
-    revealBtn.innerHTML = '<span>Answer Revealed</span> <i>✨</i>';
-    revealBtn.style.opacity = '0.5';
-    revealBtn.style.pointerEvents = 'none';
-  });
+  if (revealBtn && dykGroup) {
+    revealBtn.addEventListener('click', () => {
+      dykGroup.classList.remove('dyk-card-hidden');
+      dykGroup.classList.add('dyk-card-visible');
+
+      // Smooth scroll to the card group
+      setTimeout(() => {
+        dykGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+
+      // Optionally change button text or hide it
+      revealBtn.innerHTML = '<span>Answer Revealed</span> <i>✨</i>';
+      revealBtn.style.opacity = '0.5';
+      revealBtn.style.pointerEvents = 'none';
+    });
+  }
+
+  const albumTrack = document.getElementById('mangrove-album-track');
+  const prevBtn = document.getElementById('album-prev-btn');
+  const nextBtn = document.getElementById('album-next-btn');
+
+  if (window.__leadInAlbumTimer) {
+    window.clearInterval(window.__leadInAlbumTimer);
+    window.__leadInAlbumTimer = null;
+  }
+
+  if (!albumTrack) return;
+  const albumItems = Array.from(albumTrack.querySelectorAll('.mangrove-album-item'));
+
+  const calcStep = () => {
+    const firstCard = albumTrack.querySelector('.mangrove-album-item');
+    if (!firstCard) return Math.max(280, albumTrack.clientWidth * 0.7);
+    const style = window.getComputedStyle(albumTrack);
+    const gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+    return firstCard.getBoundingClientRect().width + gap;
+  };
+
+  const scrollNext = () => {
+    const max = albumTrack.scrollWidth - albumTrack.clientWidth;
+    if (albumTrack.scrollLeft >= max - 4) {
+      albumTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      return;
+    }
+    albumTrack.scrollBy({ left: calcStep(), behavior: 'smooth' });
+  };
+
+  const scrollPrev = () => {
+    if (albumTrack.scrollLeft <= 4) {
+      const max = albumTrack.scrollWidth - albumTrack.clientWidth;
+      albumTrack.scrollTo({ left: Math.max(0, max), behavior: 'smooth' });
+      return;
+    }
+    albumTrack.scrollBy({ left: -calcStep(), behavior: 'smooth' });
+  };
+
+  const updateAlbumDepth = () => {
+    if (albumItems.length === 0) return;
+    const trackRect = albumTrack.getBoundingClientRect();
+    const centerX = trackRect.left + trackRect.width / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+    albumItems.forEach((item, index) => {
+      const rect = item.getBoundingClientRect();
+      const c = rect.left + rect.width / 2;
+      const d = Math.abs(c - centerX);
+      if (d < closestDistance) {
+        closestDistance = d;
+        closestIndex = index;
+      }
+    });
+
+    albumItems.forEach((item, index) => {
+      item.classList.remove('is-center', 'is-left', 'is-right', 'is-far');
+      if (index === closestIndex) {
+        item.classList.add('is-center');
+        return;
+      }
+      if (index === closestIndex - 1) {
+        item.classList.add('is-left');
+        return;
+      }
+      if (index === closestIndex + 1) {
+        item.classList.add('is-right');
+        return;
+      }
+      item.classList.add('is-far');
+    });
+  };
+
+  prevBtn?.addEventListener('click', scrollPrev);
+  nextBtn?.addEventListener('click', scrollNext);
+
+  const startAutoPlay = () => {
+    window.__leadInAlbumTimer = window.setInterval(scrollNext, 3200);
+  };
+  const stopAutoPlay = () => {
+    if (!window.__leadInAlbumTimer) return;
+    window.clearInterval(window.__leadInAlbumTimer);
+    window.__leadInAlbumTimer = null;
+  };
+
+  albumTrack.addEventListener('mouseenter', stopAutoPlay);
+  albumTrack.addEventListener('mouseleave', startAutoPlay);
+  prevBtn?.addEventListener('mouseenter', stopAutoPlay);
+  prevBtn?.addEventListener('mouseleave', startAutoPlay);
+  nextBtn?.addEventListener('mouseenter', stopAutoPlay);
+  nextBtn?.addEventListener('mouseleave', startAutoPlay);
+  albumTrack.addEventListener('scroll', updateAlbumDepth, { passive: true });
+  window.addEventListener('resize', updateAlbumDepth);
+
+  updateAlbumDepth();
+  startAutoPlay();
 }
 
 function syncActivity31FullscreenButton() {

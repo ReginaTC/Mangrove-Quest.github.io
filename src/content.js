@@ -69,16 +69,44 @@ export const pages = {
     heroSubtitle: "The Breathing Forest",
     heroImage: "/assets/lead-in.png",
     content: `
-      <div class="editorial-card">
-        <div class="editorial-image" style="background-image: url('/assets/mangrove_intro_card.jpg');">
-          <div class="editorial-gradient"></div>
-        </div>
-        <div class="editorial-content">
-          <h2>The Breathing Forest</h2>
-          <p>Do you know that along the coastline of Shenzhen Bay, there is a "breathing" forest?</p>
-          <p>These forests take root in the intertidal zone with strong vitality. They serve as an ecological bridge between land and sea, providing shelter for countless creatures.</p>
-          <p>This is the mangrove forest — a natural wonder that acts as a vital "green kidney" for our busy city.</p>
-          <p>Today, let's step closer and explore these amazing coastal guardians.</p>
+      <div class="card glass leadin-intro-card">
+        <p>Do you know that along the coastline of <strong>Shenzhen Bay</strong>, there is a <strong>"breathing" forest</strong>?</p>
+        <p>These forests take root in the <strong>intertidal zone</strong> with strong vitality, serving as an <strong>ecological bridge</strong> between land and sea.</p>
+        <p><strong>Mangroves</strong> provide shelter for countless creatures and act as a vital <strong>"green kidney"</strong> for our busy city.</p>
+        <p>Today, let's step closer and explore these amazing <strong>coastal guardians</strong>.</p>
+      </div>
+
+      <div class="mangrove-album-card">
+        <h2 class="mangrove-album-title">The Breathing Forest</h2>
+        <div class="mangrove-album-shell">
+          <button id="album-prev-btn" class="mangrove-album-nav" type="button" aria-label="上一组">&lt;&lt;</button>
+          <div id="mangrove-album-track" class="mangrove-album-track">
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/1.jpg" alt="Mangrove Photo 1">
+            </figure>
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/2.jpg" alt="Mangrove Photo 2">
+            </figure>
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/3.jpg" alt="Mangrove Photo 3">
+            </figure>
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/4.jpg" alt="Mangrove Photo 4">
+            </figure>
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/5.jpg" alt="Mangrove Photo 5">
+            </figure>
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/6.jpg" alt="Mangrove Photo 6">
+            </figure>
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/7.jpg" alt="Mangrove Photo 7">
+            </figure>
+            <figure class="mangrove-album-item">
+              <img src="/assets/photos/8.jpg" alt="Mangrove Photo 8">
+            </figure>
+          </div>
+          <button id="album-next-btn" class="mangrove-album-nav" type="button" aria-label="下一组">&gt;&gt;</button>
         </div>
       </div>
       
@@ -109,14 +137,14 @@ export const pages = {
             </div>
             <div class="dyk-image-box">
               <img src="/assets/did_you_know_tree.png" alt="Mangrove Tannin">
-              <div class="dyk-label">Mangrove "Bleeding" Tannin</div>
+              <div class="dyk-label">Mangrove Tannin Oxidation</div>
             </div>
           </div>
         </div>
 
         <!-- Card 2: The Call to Action -->
         <div class="card glass" style="text-align: center; border-top: 4px solid var(--mangrove-gold); padding: 3rem;">
-          <p style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted);">Actually, there are many secrets hidden in the mangrove forest, which you need to explore and discover by yourselves.</p>
+          <p style="font-style: italic; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted);">Actually, there are many secrets hidden in the mangrove forest, which you need to explore and discover by yourselves. Are you ready to know these special plants and their neighbors?</p>
           <h3 style="color: var(--mangrove-deep); letter-spacing: 2px; font-size: 1.8rem; margin: 0;">📢 LET'S START YOUR MANGROVE QUEST!</h3>
         </div>
       </div>
@@ -445,6 +473,32 @@ export const pages = {
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="card glass activity4-tool-card">
+        <h3 style="color: var(--mangrove-deep); margin-bottom: 0.85rem;">Digital Investigation Tool</h3>
+        <p style="margin-bottom: 0.85rem; color: var(--text-muted);">
+          In this interface, use your group's field observations to build a species map.
+        </p>
+        <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+          <li style="margin-bottom: 0.55rem;">Based on on-site observations, drag species from the left panel.</li>
+          <li style="margin-bottom: 0.55rem;">Place each species on the corresponding location on the map.</li>
+          <li style="margin-bottom: 0.55rem;">Discuss as a group and adjust positions according to evidence.</li>
+          <li>Before submitting, check whether all placements match your field notes.</li>
+        </ul>
+        <div class="activity4-tool-frame-wrap">
+          <iframe
+            src="https://qq3w69fg8p.coze.site/"
+            title="Activity 4 Digital Investigation Tool"
+            class="activity4-tool-frame"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+        <p style="margin-top: 0.75rem; font-size: 0.92rem;">
+          If the embedded view does not load, open it directly:
+          <a href="https://qq3w69fg8p.coze.site/" target="_blank" rel="noopener noreferrer">Open Tool in New Window</a>
+        </p>
       </div>
     `
   },
