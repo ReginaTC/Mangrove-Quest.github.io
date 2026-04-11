@@ -5,6 +5,11 @@ export const pages = {
     heroSubtitle: "Explore the Hidden Wonders of the Coastal Forest",
     heroImage: "/assets/mangrove-hero.png",
     content: `
+      <div class="home-usage-note">
+        <span class="home-usage-note-arrow">↓</span>
+        <span>The following content on this page is a usage guide for this courseware.</span>
+      </div>
+
       <div class="card glass">
         <h2>Introductory Note</h2>
         <p>This website is designed to create a self‑directed learning experience that integrates mangrove ecosystem knowledge with gamified experiences and offline practice. Through problem‑based research, AI‑assisted study, and interactive games, students will explore the mangrove environment, including the interdependent relationships between its animals and plants and the ecological challenges it faces.</p>
@@ -79,7 +84,7 @@ export const pages = {
       
       <div class="card glass" style="border-left: 4px solid var(--mangrove-accent);">
         <h2>🤔 THINK</h2>
-        <p style="font-size: 1.2rem; font-weight: 600; color: #000000;">Why are these green forests called mangroves (which means "red forest" in Chinese)?</p>
+        <p style="font-size: 1.2rem; font-weight: 600; color: #000000;">Why are these <span style="color: #2e8b57;">green</span> forests called mangroves (which means "<span style="color: #d9534f;">red</span> forest" in Chinese)?</p>
         <button class="reveal-dyk-btn" id="reveal-dyk-btn">
           <span>Discover the Answer</span>
           <i>✨</i>
@@ -302,27 +307,26 @@ export const pages = {
     content: `
       <div class="card glass">
         <h2>Concept Map Creation</h2>
-        <div class="two-column-layout activity32-layout">
-          <div class="activity32-text">
+        <div class="two-column-layout" style="margin-top: 1.2rem; align-items: flex-start;">
+          <div style="flex: 1.05;">
             <h3 style="color: var(--mangrove-deep); margin-bottom: 1rem;">Background & Task</h3>
-            <p>We have gained a basic understanding of the species related to mangroves after our initial study. Please work in small groups, combine the knowledge of ecosystems we have learned from the textbook (pages 85-88), and consult library materials to draw a concept map on the structure and function of ecosystems about mangrove.</p>
-            
-            <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
-              <li style="margin-bottom: 0.75rem;">Using <strong>Camp</strong> (or your preferred mind-mapping software) on your computer to create the map.</li>
-              <li>You need to consider the ecological relationships between different animals as well as their relationships with the environment.</li>
-            </ul>
+            <p>We have gained a basic understanding of the species related to mangroves after our initial study. Please work in small groups, combine the knowledge of ecosystems we have learned from the textbook (pages 85-88), and draw a concept map on the structure and function of mangrove ecosystems.</p>
 
+            <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+              <li style="margin-bottom: 0.75rem;">Use the <strong>Food Chain Builder below on this page</strong> to create your map.</li>
+              <li>Consider ecological relationships between different animals and their relationships with the environment.</li>
+            </ul>
           </div>
 
-          <div class="activity32-media">
-            <div class="image-card activity32-example-card">
-              <img src="https://drive.google.com/thumbnail?id=1EsjnzoRyxNOs5Ck4TLWg9iX8Ind35_m9&sz=w1000" alt="Concept Map Example">
+          <div style="flex: 0.95;">
+            <div class="image-card">
+              <img src="https://drive.google.com/thumbnail?id=1EsjnzoRyxNOs5Ck4TLWg9iX8Ind35_m9&sz=w1000" alt="Concept Map Example" style="height: auto; object-fit: contain; padding: 0;">
               <div class="image-caption">Example Concept Map</div>
             </div>
           </div>
         </div>
 
-        <div class="requirement-box activity32-requirement-box">
+        <div class="requirement-box" style="width: min(980px, 96%); margin: 1.2rem auto 1.2rem auto;">
           <h4>⏱️ Creation Requirements</h4>
           <ul>
             <li>You are given <strong>30 minutes</strong> for the creation of the initial concept map.</li>
@@ -330,20 +334,43 @@ export const pages = {
           </ul>
         </div>
 
-        <div class="activity32-submission">
-          <h3 style="color: var(--mangrove-deep); margin-top: 1.6rem; margin-bottom: 1rem;">Submission & Peer Review</h3>
-          <ul style="padding-left: 1.5rem; list-style: circle;">
-            <li style="margin-bottom: 0.75rem;">Once completed, please upload it via <strong>Padlet</strong>.</li>
-            <li style="margin-bottom: 0.75rem;">We will then have an online discussion about the completeness and accuracy of each group's concept map.</li>
-            <li>Each group will revise their concept map based on the comments received.</li>
-          </ul>
-        </div>
+      </div>
 
-        <div class="activity32-padlet-wide">
-          <div class="activity32-padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
-            <p style="padding:0;margin:0"><iframe src="https://padlet.com/embed/p42uby60jk15ubsn" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe></p>
-            <div style="display:flex;align-items:center;justify-content:end;margin:0;padding:8px 8px 8px 0"><a href="https://padlet.com?ref=embed" style="display:flex;align-items:center;gap:5px;flex-grow:0;margin:0;border:none;padding:0;text-decoration:none" target="_blank"><span aria-hidden style="color:#9E9E9E;font-size:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1">Made with</span><img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0;margin:0;background:0 0;border:none;box-shadow:none;display:block" alt="Padlet 上的创作"></a></div>
-          </div>
+      <div class="card glass">
+        <h3 style="color: var(--mangrove-deep); margin: 0 0 0.9rem;">Food Chain Builder</h3>
+        <p style="margin-bottom: 1.2rem; color: var(--text-muted);">
+          Drag species from the left library into the workspace. Then drag from one species anchor point to another species anchor point to create an arrow link. Submit when finished and the system will check your food chain.
+        </p>
+
+        <div class="activity32-tool">
+          <aside class="activity32-library">
+            <h3>Species Library</h3>
+            <p class="activity32-tip">Drag these into the workspace:</p>
+            <div id="fc-species-bank" class="activity32-species-bank">
+              <button type="button" class="fc-species-chip" draggable="true" data-species="木榄"><span class="fc-species-emoji" aria-hidden="true">🌳</span><span>Mangrove (Kandelia obovata) 木榄</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="藻类"><span class="fc-species-emoji" aria-hidden="true">🌿</span><span>Algae 藻类</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="浮游生物"><span class="fc-species-emoji" aria-hidden="true">🫧</span><span>Plankton 浮游生物</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="牡蛎"><span class="fc-species-emoji" aria-hidden="true">🦪</span><span>Oyster 牡蛎</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="弧边招潮蟹"><span class="fc-species-emoji" aria-hidden="true">🦀</span><span>Arc-Edged Fiddler Crab 弧边招潮蟹</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="大弹涂鱼"><span class="fc-species-emoji" aria-hidden="true">🐟</span><span>Giant Mudskipper 大弹涂鱼</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="黑脸琵鹭"><span class="fc-species-emoji" aria-hidden="true">🐦</span><span>Black-faced Spoonbill 黑脸琵鹭</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="豹猫"><span class="fc-species-emoji" aria-hidden="true">🐆</span><span>Leopard Cat 豹猫</span></button>
+              <button type="button" class="fc-species-chip" draggable="true" data-species="柠檬鲨"><span class="fc-species-emoji" aria-hidden="true">🦈</span><span>Lemon Shark 柠檬鲨</span></button>
+            </div>
+          </aside>
+
+          <section class="activity32-work">
+            <h3>Work Area</h3>
+            <div id="fc-workspace" class="activity32-workspace">
+              <svg id="fc-link-layer" class="activity32-link-layer" aria-hidden="true"></svg>
+              <div class="activity32-workspace-hint">Drop species here and drag anchors to connect</div>
+            </div>
+            <div class="activity32-tool-actions">
+              <button id="fc-clear-btn" type="button" class="activity32-action">Clear All</button>
+              <button id="fc-submit-btn" type="button" class="activity32-action primary">Submit</button>
+            </div>
+            <div id="fc-feedback" class="activity32-feedback" aria-live="polite"></div>
+          </section>
         </div>
       </div>
     `

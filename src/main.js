@@ -44,6 +44,7 @@ function renderPage(pageId) {
         <div class="hero-content">
           <h1>${page.heroTitle}</h1>
           <p style="font-size: 1.5rem; color: var(--mangrove-mint);">${page.heroSubtitle}</p>
+          <a href="#lead-in" class="hero-start-btn">Start to learn</a>
         </div>
         ${page.showArrow ? '<div class="scroll-arrow" id="scroll-to-content">↓</div>' : ''}
       ` : `
@@ -132,26 +133,17 @@ function renderPage(pageId) {
     });
   }
 
-  // Handle Scrollbars
-  if (page.fullScreen) {
-    document.body.style.overflowY = 'hidden';
-    // Small delay to allow initial render then lock if we are already at section
-    // Actually, usually we want to allow scrolling BETWEEN hero and content, 
-    // but the content itself shouldn't have a double scrollbar.
-    // Given the request "不要有滑动块", if the page is full-screen, we might want to hide root scrollbar.
-    // But if we have a hero, we need to scroll to content.
-    // Let's keep overflow auto but the container itself is clipped.
-    document.body.style.overflowY = 'auto'; 
-  } else {
+  // Keep root scroll behavior consistent for SPA page swaps.
+  document.body.style.overflowY = 'auto';
+
   if (pageId === 'lead-in') {
     initLeadIn();
   }
-}
 
 function initLeadIn() {
   const revealBtn = document.getElementById('reveal-dyk-btn');
   const dykGroup = document.getElementById('dyk-group');
-  
+
   if (!revealBtn || !dykGroup) return;
   
   revealBtn.addEventListener('click', () => {
@@ -201,6 +193,383 @@ function initActivity2() {
   iframe.style.background = 'rgba(255, 255, 255, 0.8)'; // Subtle white base to ensure readability within glass shell
   
   container.appendChild(iframe);
+}
+
+function initActivity32() {
+  const bank = document.getElementById('fc-species-bank');
+  const workspace = document.getElementById('fc-workspace');
+  const linkLayer = document.getElementById('fc-link-layer');
+  const clearBtn = document.getElementById('fc-clear-btn');
+  const submitBtn = document.getElementById('fc-submit-btn');
+  const feedback = document.getElementById('fc-feedback');
+
+  if (!bank || !workspace || !linkLayer || !clearBtn || !submitBtn || !feedback) return;
+
+  const nodes = new Map(); // species -> { el, x, y }
+  const links = new Set(); // "from|to|fromSide|toSide"
+  let selectedSource = null;
+  let selectedLink = null;
+  let activeLinkSource = null;
+  let activeLinkSourceSide = null;
+  let tempPointer = null;
+
+  const validLinks = new Set([
+    '木榄|弧边招潮蟹',
+    '藻类|弧边招潮蟹',
+    '藻类|牡蛎',
+    '浮游生物|牡蛎',
+    '弧边招潮蟹|大弹涂鱼',
+    '牡蛎|大弹涂鱼',
+    '大弹涂鱼|黑脸琵鹭',
+    '弧边招潮蟹|黑脸琵鹭',
+    '大弹涂鱼|豹猫',
+    '大弹涂鱼|柠檬鲨'
+  ]);
+
+  const removeNodeBySpecies = (species) => {
+    const entry = nodes.get(species);
+    if (!entry) return;
+    entry.el.remove();
+    nodes.delete(species);
+    Array.from(links).forEach((pair) => {
+      const [from, to] = pair.split('|');
+      if (from === species || to === species) links.delete(pair);
+    });
+    if (selectedSource === species) selectedSource = null;
+    renderLinks();
+  };
+
+  const ensureMarker = () => {
+    if (linkLayer.querySelector('#fc-arrow')) return;
+    linkLayer.innerHTML = `
+      <defs>
+        <marker id="fc-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto-start-reverse">
+          <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#1a5c50"></path>
+        </marker>
+      </defs>
+    `;
+  };
+
+  const workspaceRect = () => workspace.getBoundingClientRect();
+
+  const clearSelection = () => {
+    selectedSource = null;
+    workspace.querySelectorAll('.fc-node.selected').forEach((node) => node.classList.remove('selected'));
+  };
+
+  const clearLinkSelection = () => {
+    selectedLink = null;
+  };
+
+  const toWorkspacePoint = (clientX, clientY) => {
+    const rect = workspaceRect();
+    return {
+      x: Math.max(8, Math.min(clientX - rect.left, rect.width - 8)),
+      y: Math.max(8, Math.min(clientY - rect.top, rect.height - 8))
+    };
+  };
+
+  const getAnchorPoint = (species, side = 'right') => {
+    const entry = nodes.get(species);
+    if (!entry) return null;
+    const anchor = entry.el.querySelector(`.fc-node-anchor[data-side="${side}"]`);
+    if (!anchor) return { x: entry.x, y: entry.y };
+    const wr = workspaceRect();
+    const ar = anchor.getBoundingClientRect();
+    return {
+      x: ar.left + ar.width / 2 - wr.left,
+      y: ar.top + ar.height / 2 - wr.top
+    };
+  };
+
+  const renderLinks = () => {
+    ensureMarker();
+    const defs = linkLayer.querySelector('defs');
+    linkLayer.innerHTML = '';
+    if (defs) linkLayer.appendChild(defs);
+
+    const w = workspace.clientWidth;
+    const h = workspace.clientHeight;
+    linkLayer.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    linkLayer.setAttribute('width', String(w));
+    linkLayer.setAttribute('height', String(h));
+
+    links.forEach((pair) => {
+      const [from, to, fromSide = 'right', toSide = 'left'] = pair.split('|');
+      const fromPoint = getAnchorPoint(from, fromSide);
+      const toPoint = getAnchorPoint(to, toSide);
+      if (!fromPoint || !toPoint) return;
+
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.classList.add('fc-link');
+      if (selectedLink === pair) line.classList.add('selected');
+      line.setAttribute('x1', String(fromPoint.x));
+      line.setAttribute('y1', String(fromPoint.y));
+      line.setAttribute('x2', String(toPoint.x));
+      line.setAttribute('y2', String(toPoint.y));
+      line.setAttribute('stroke', '#1a5c50');
+      line.setAttribute('stroke-width', '2.2');
+      line.setAttribute('marker-end', 'url(#fc-arrow)');
+      line.setAttribute('stroke-linecap', 'round');
+      line.dataset.pair = pair;
+      line.addEventListener('click', (e) => {
+        e.stopPropagation();
+        clearSelection();
+        selectedLink = pair;
+        renderLinks();
+      });
+      linkLayer.appendChild(line);
+    });
+
+    if (activeLinkSource && tempPointer) {
+      const fromPoint = getAnchorPoint(activeLinkSource, activeLinkSourceSide || 'right');
+      if (fromPoint) {
+        const tempLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        tempLine.setAttribute('x1', String(fromPoint.x));
+        tempLine.setAttribute('y1', String(fromPoint.y));
+        tempLine.setAttribute('x2', String(tempPointer.x));
+        tempLine.setAttribute('y2', String(tempPointer.y));
+        tempLine.setAttribute('stroke', '#2a7467');
+        tempLine.setAttribute('stroke-width', '1.8');
+        tempLine.setAttribute('stroke-dasharray', '6 4');
+        tempLine.setAttribute('marker-end', 'url(#fc-arrow)');
+        tempLine.setAttribute('stroke-linecap', 'round');
+        linkLayer.appendChild(tempLine);
+      }
+    }
+  };
+
+  const updateNodePosition = (species, x, y) => {
+    const node = nodes.get(species);
+    if (!node) return;
+    node.x = x;
+    node.y = y;
+    node.el.style.left = `${x}px`;
+    node.el.style.top = `${y}px`;
+    renderLinks();
+  };
+
+  const placeNode = (species, x, y) => {
+    if (nodes.has(species)) {
+      updateNodePosition(species, x, y);
+      return;
+    }
+
+    const nodeBtn = document.createElement('button');
+    nodeBtn.type = 'button';
+    nodeBtn.className = 'fc-node';
+    nodeBtn.dataset.species = species;
+    nodeBtn.innerHTML = `
+      <span class="fc-node-label">${species}</span>
+      <span class="fc-node-anchor" data-anchor="${species}" data-side="top" title="Drag from here to connect"></span>
+      <span class="fc-node-anchor" data-anchor="${species}" data-side="right" title="Drag from here to connect"></span>
+      <span class="fc-node-anchor" data-anchor="${species}" data-side="bottom" title="Drag from here to connect"></span>
+      <span class="fc-node-anchor" data-anchor="${species}" data-side="left" title="Drag from here to connect"></span>
+    `;
+    nodeBtn.style.left = `${x}px`;
+    nodeBtn.style.top = `${y}px`;
+
+    nodeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (nodeBtn.dataset.justDragged === '1') {
+        nodeBtn.dataset.justDragged = '0';
+        return;
+      }
+      clearLinkSelection();
+      if (!selectedSource) {
+        selectedSource = species;
+        nodeBtn.classList.add('selected');
+        return;
+      }
+
+      if (selectedSource === species) {
+        clearSelection();
+        return;
+      }
+      clearSelection();
+    });
+
+    const anchors = nodeBtn.querySelectorAll('.fc-node-anchor');
+    nodeBtn.addEventListener('mousedown', (e) => {
+      const isAnchor = e.target.closest('.fc-node-anchor');
+      if (isAnchor) return;
+      e.preventDefault();
+
+      const rect = workspaceRect();
+      const startX = e.clientX;
+      const startY = e.clientY;
+      let moved = false;
+
+      const onMove = (evt) => {
+        const dx = evt.clientX - startX;
+        const dy = evt.clientY - startY;
+        if (Math.abs(dx) > 2 || Math.abs(dy) > 2) moved = true;
+
+        const pt = toWorkspacePoint(evt.clientX, evt.clientY);
+        updateNodePosition(species, pt.x, pt.y);
+      };
+
+      const onUp = () => {
+        if (moved) {
+          nodeBtn.dataset.justDragged = '1';
+        }
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+      };
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+
+    anchors.forEach((anchor) => {
+      anchor.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        activeLinkSource = species;
+        activeLinkSourceSide = anchor.dataset.side || 'right';
+        tempPointer = toWorkspacePoint(e.clientX, e.clientY);
+        renderLinks();
+
+        const onMove = (evt) => {
+          tempPointer = toWorkspacePoint(evt.clientX, evt.clientY);
+          renderLinks();
+        };
+
+        const onUp = (evt) => {
+          const targetAnchor = evt.target.closest('.fc-node-anchor');
+          if (targetAnchor) {
+            const targetSpecies = targetAnchor.dataset.anchor;
+            const targetSide = targetAnchor.dataset.side || 'left';
+            if (targetSpecies && targetSpecies !== activeLinkSource) {
+              links.add(`${activeLinkSource}|${targetSpecies}|${activeLinkSourceSide}|${targetSide}`);
+              clearLinkSelection();
+              feedback.textContent = 'Link added. Keep building your food chain.';
+              feedback.className = 'activity32-feedback info';
+            }
+          }
+          activeLinkSource = null;
+          activeLinkSourceSide = null;
+          tempPointer = null;
+          renderLinks();
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onUp);
+        };
+
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup', onUp);
+      });
+    });
+
+    nodes.set(species, { el: nodeBtn, x, y });
+    workspace.appendChild(nodeBtn);
+    renderLinks();
+  };
+
+  bank.querySelectorAll('.fc-species-chip').forEach((chip) => {
+    chip.addEventListener('dragstart', (e) => {
+      const species = chip.dataset.species;
+      if (!species) return;
+      e.dataTransfer?.setData('text/plain', species);
+      e.dataTransfer.effectAllowed = 'copy';
+    });
+  });
+
+  workspace.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  });
+
+  workspace.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const species = e.dataTransfer?.getData('text/plain');
+    if (!species) return;
+    const rect = workspaceRect();
+    const x = Math.max(70, Math.min(e.clientX - rect.left, rect.width - 70));
+    const y = Math.max(40, Math.min(e.clientY - rect.top, rect.height - 40));
+    placeNode(species, x, y);
+    clearLinkSelection();
+    feedback.textContent = `${species} placed in workspace.`;
+    feedback.className = 'activity32-feedback info';
+  });
+
+  workspace.addEventListener('click', () => {
+    clearSelection();
+    clearLinkSelection();
+    renderLinks();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    nodes.forEach((entry) => entry.el.remove());
+    nodes.clear();
+    links.clear();
+    clearSelection();
+    clearLinkSelection();
+    renderLinks();
+    feedback.textContent = 'Workspace cleared.';
+    feedback.className = 'activity32-feedback info';
+  });
+
+  if (window.__activity32DeleteHandler) {
+    document.removeEventListener('keydown', window.__activity32DeleteHandler);
+  }
+  window.__activity32DeleteHandler = (e) => {
+    if (e.key !== 'Delete' && e.key !== 'Backspace') return;
+    if (!selectedSource && !selectedLink) return;
+    e.preventDefault();
+    if (selectedLink) {
+      links.delete(selectedLink);
+      clearLinkSelection();
+      renderLinks();
+      feedback.textContent = 'Selected link removed.';
+      feedback.className = 'activity32-feedback info';
+      return;
+    }
+    removeNodeBySpecies(selectedSource);
+    clearSelection();
+    clearLinkSelection();
+    feedback.textContent = 'Selected species removed.';
+    feedback.className = 'activity32-feedback info';
+  };
+  document.addEventListener('keydown', window.__activity32DeleteHandler);
+
+  submitBtn.addEventListener('click', () => {
+    const created = Array.from(new Set(Array.from(links).map((item) => item.split('|').slice(0, 2).join('|'))));
+    const invalid = created.filter((link) => !validLinks.has(link));
+    const validCount = created.length - invalid.length;
+
+    let hasChain3 = false;
+    created.forEach((first) => {
+      const [, mid] = first.split('|');
+      created.forEach((second) => {
+        const [head] = second.split('|');
+        if (mid === head) hasChain3 = true;
+      });
+    });
+
+    if (created.length === 0) {
+      feedback.textContent = 'No links yet. Build at least one food chain before submitting.';
+      feedback.className = 'activity32-feedback warn';
+      return;
+    }
+
+    if (invalid.length > 0) {
+      feedback.textContent = `Not correct yet: ${invalid.length} link(s) do not match the mangrove food chain.`;
+      feedback.className = 'activity32-feedback error';
+      return;
+    }
+
+    if (validCount < 5 || !hasChain3) {
+      feedback.textContent = 'Almost there. Add more correct links and make at least one 3-step chain.';
+      feedback.className = 'activity32-feedback warn';
+      return;
+    }
+
+    feedback.textContent = `Great job! ${validCount} valid links. Your food chain is correct.`;
+    feedback.className = 'activity32-feedback success';
+  });
+
+  window.addEventListener('resize', renderLinks);
+  renderLinks();
 }
 
 function initActivity5() {
@@ -275,6 +644,18 @@ function initActivity5() {
     reader.readAsDataURL(selectedFile);
   }
 }
+  if (pageId === 'activity2') {
+    initActivity2();
+  }
+
+  if (pageId === 'activity3-2') {
+    initActivity32();
+  }
+
+  if (pageId === 'activity5') {
+    initActivity5();
+  }
+
   if (pageId === 'activity6') {
     initActivity6();
     initPosterModal();
