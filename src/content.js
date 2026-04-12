@@ -69,6 +69,8 @@ export const pages = {
     heroSubtitle: "The Breathing Forest",
     heroImage: "/assets/lead-in.png",
     content: `
+      <h1 class="leadin-main-title">The Breathing Forest</h1>
+
       <div class="card glass leadin-intro-card">
         <p>Do you know that along the coastline of <strong>Shenzhen Bay</strong>, there is a <strong>"breathing" forest</strong>?</p>
         <p>These forests take root in the <strong>intertidal zone</strong> with strong vitality, serving as an <strong>ecological bridge</strong> between land and sea.</p>
@@ -77,7 +79,6 @@ export const pages = {
       </div>
 
       <div class="mangrove-album-card">
-        <h2 class="mangrove-album-title">The Breathing Forest</h2>
         <div class="mangrove-album-shell">
           <button id="album-prev-btn" class="mangrove-album-nav" type="button" aria-label="上一组">&lt;&lt;</button>
           <div id="mangrove-album-track" class="mangrove-album-track">

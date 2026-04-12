@@ -1852,6 +1852,16 @@ footer {
   margin-bottom: 0;
 }
 
+.leadin-main-title {
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  line-height: 1.12;
+  color: var(--mangrove-deep);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
 .mangrove-album-title {
   margin: 0 0 0.7rem 0;
   text-align: center;
