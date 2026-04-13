@@ -313,6 +313,14 @@ export const pages = {
     showArrow: true,
     fullScreen: true,
     content: `
+      <div class="card glass activity31-info-card">
+        <h2>Introduction</h2>
+        <p>After we have formed a general impression of the mangroves, now we are going to explore more about the creatures in the mangrove ecosystem. When playing the game below, we need to take on the role of a creature living in the mangrove forest, experience their daily lives, and make choices as the activity unfolds.</p>
+        <p>Making the right decisions will help the little animals thrive, whilst wrong choices may lead to negative consequences, so please think carefully!</p>
+        <h2>Tasks</h2>
+        <p>When playing this game, we should pay attention to the behavioral patterns of these creatures, including their <strong>feeding habits, how they interact with their natural environment, and the relationships between them</strong>. Please play as each animal in the game until you have completed all their storylines, including both successful and unsuccessful endings, and reflect on these animals' <strong>philosophies of survival</strong> based on your gameplay experience.</p>
+      </div>
+
       <div class="card glass activity31-card">
         <div id="activity31-fullscreen-target" class="activity31-frame-shell">
           <button id="activity31-fullscreen-btn" class="iframe-fullscreen-btn" type="button" aria-label="Enter fullscreen mode">
@@ -324,6 +332,26 @@ export const pages = {
             allow="microphone; camera; geolocation; fullscreen"
             allowfullscreen
           ></iframe>
+        </div>
+      </div>
+
+      <div class="card glass">
+        <h2>Extended Questions About Mangrove Creatures</h2>
+        <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
+          <p style="padding:0;margin:0">
+            <iframe
+              src="https://padlet.com/embed/v7ec7djk8g6d0neb"
+              frameborder="0"
+              allow="camera;microphone;geolocation;display-capture;clipboard-write"
+              style="width:100%;height:608px;display:block;padding:0;margin:0"
+            ></iframe>
+          </p>
+          <div style="display:flex;align-items:center;justify-content:end;margin:0;padding:8px 8px 8px 0">
+            <a href="https://padlet.com?ref=embed" style="display:flex;align-items:center;gap:5px;flex-grow:0;margin:0;border:none;padding:0;text-decoration:none" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true" style="color:#9E9E9E;font-size:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1">Made with</span>
+              <img src="https://padlet.net/emails/padlet_email_logo_2026_text-dark-200.png" height="12" style="padding:0;margin:0;background:0 0;border:none;box-shadow:none;display:block" alt="Made with Padlet">
+            </a>
+          </div>
         </div>
       </div>
     `
@@ -404,34 +432,169 @@ export const pages = {
       </div>
     `
   },
-  activity4: {
-    title: "3.4 Activity 4: Coastal Guardians",
-    heroTitle: "Activity 4",
+  'activity4-1': {
+    title: "3.4 Activity 4.1: Coastal Guardians",
+    heroTitle: "Activity 4.1",
     heroSubtitle: "Coastal Guardians: Field Investigation",
     heroImage: "/assets/activity4.png",
     content: `
+      <div class="activity4-mission-box">
+        <p>🌿 Now, we will become ecological researchers and step into the mangrove park.</p>
+        <p>📝 We will observe with our eyes, record with actions, and summarize with our thoughts.</p>
+        <p>🐦 Let’s set off together to complete a real, fun and meaningful field research mission of the mangroves!</p>
+      </div>
+
       <div class="card glass">
-        <h2>Investigation Overview</h2>
-        <div class="two-column-layout activity4-overview-layout">
-          <div class="activity4-overview-text">
-            <h3 style="color: var(--mangrove-deep); margin-bottom: 1rem;">Investigation Tasks</h3>
-            <ul style="padding-left: 1.35rem; margin-bottom: 1rem;">
-              <li style="margin-bottom: 0.65rem; line-height: 1.45;">Work in groups and each group should arrange the division of labor by themselves.</li>
-              <li style="margin-bottom: 0.65rem; line-height: 1.45;">Use the map independently, determine the route based on the destination - <strong>Mangrove Science and Culture Museum</strong> and set up environmental data collection points to provide environmental data support for the production of ecological bottles.</li>
-              <li style="margin-bottom: 0.65rem; line-height: 1.45;">Take photos of the environmental pollution and invasive species encountered on the route and mark their positions on the map. After returning to school, pin the photos at the corresponding positions.</li>
-              <li style="line-height: 1.45;">Visit the Mangrove Science and Culture Museum at the end of the route and make records of the relevant knowledge.</li>
+        <h2>Investigation Tasks</h2>
+        <div class="activity4-steps-grid">
+          <article class="activity4-step-card">
+            <h3 class="activity4-step-heading"><span class="activity4-step-label">Step 1</span><span class="activity4-step-title">Group Arrangement</span></h3>
+            <p>Work in groups of 5-6. Form groups freely, divide tasks clearly (e.g., one takes photos, one measures data, one marks the map), and finish the research together.</p>
+          </article>
+
+          <article class="activity4-step-card">
+            <h3 class="activity4-step-heading"><span class="activity4-step-label">Step 2</span><span class="activity4-step-title">Tool Preparation</span></h3>
+            <p>Each group must bring at least one mobile phone/camera.</p>
+            <p>Collect a set of tools:</p>
+            <ul>
+              <li>physical map</li>
+              <li>colored pens</li>
+              <li>measuring tape</li>
+              <li>water temperature gauge</li>
+              <li>stickers</li>
+              <li>......</li>
             </ul>
-          </div>
-          
-          <div class="activity4-overview-media">
-            <div class="image-card activity4-map-card">
-              <img src="https://drive.google.com/thumbnail?id=1qB5dxWTrKEgFPZUWd18k3UqWgZ3LY1sG&sz=w1000" alt="Mangrove Floor Plan">
-              <div class="image-caption">Floor Plan & Route Map</div>
+            <p>Check that all tools work before starting.</p>
+          </article>
+
+          <article class="activity4-step-card">
+            <h3 class="activity4-step-heading"><span class="activity4-step-label">Step 3</span><span class="activity4-step-title">Route and Data Collection Points</span></h3>
+            <p>Use the physical map to plan your route, with the Mangrove Science and Culture Museum as the final stop. Set up environmental data collection points along the way to get data for making ecological bottles later.</p>
+            <div class="image-card activity4-step-image">
+              <img src="/assets/map.jpg" alt="Mangrove investigation route map">
+              <div class="image-caption">Field Route Planning Map</div>
             </div>
-            <div class="time-note">
-              ⏱️ Note: You need to complete the tasks and arrive at the Mangrove Science Museum (Administration Building) within 2 hours.
+          </article>
+
+          <article class="activity4-step-card">
+            <h3 class="activity4-step-heading"><span class="activity4-step-label">Step 4</span><span class="activity4-step-title">On-site Observation and Recording (Completed with Mobile Phone)</span></h3>
+            <div class="activity4-step4-stack">
+              <section class="activity4-step4-module">
+                <h4>Observation Objects</h4>
+                <p>Carefully find, observe and try to identify these three types of organisms in the park:</p>
+                <div class="activity4-object-cards">
+                  <article class="activity4-object-card">
+                    <div class="activity4-object-text">
+                      <h5>Mangrove plants</h5>
+                      <p>Observe leaves, roots and trunks (e.g., aerial roots, buttress roots), including size, shape, color and growth status.</p>
+                    </div>
+                    <img src="/assets/plants.jpg" alt="Mangrove plants for observation">
+                  </article>
+                  <article class="activity4-object-card">
+                    <div class="activity4-object-text">
+                      <h5>Benthic animals</h5>
+                      <p>Look for crabs, shellfish and snails in mudflats, under roots or shallow water. Observe without catching or disturbing them.</p>
+                    </div>
+                    <img src="/assets/benthic%20animals.jpg" alt="Benthic animals for observation">
+                  </article>
+                  <article class="activity4-object-card">
+                    <div class="activity4-object-text">
+                      <h5>Birds</h5>
+                      <p>Watch birds on branches, foraging or flying nearby. Record feather color, body size and feeding or flying habits.</p>
+                    </div>
+                    <img src="/assets/birds.jpg" alt="Birds for observation">
+                  </article>
+                </div>
+              </section>
+
+              <section class="activity4-step4-module">
+                <h4>Recording Requirements</h4>
+                <p>Take a clear photo of each organism you find (make sure the organism and its surroundings are visible for later identification).</p>
+                <p>After taking the photo, mark 3 key points in your phone notes or a notebook:</p>
+                <div class="activity4-recording-table-wrap">
+                  <table class="activity4-recording-table">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Key Point</th>
+                        <th>What to Record</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Organism name</td>
+                        <td>Describe its appearance if unsure, e.g., "mangrove with oval leaves and exposed roots".</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Location</td>
+                        <td>E.g., "near the north wooden plank road on the map".</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Discovery time</td>
+                        <td>Record the exact time observed.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="activity4-step4-module">
+                <h4>Observation Principles</h4>
+                <p><span class="activity4-warning-sign" aria-hidden="true">⚠</span> Do not touch or disturb organisms.</p>
+                <h4>Recording of Pollution and Invasive Species</h4>
+                <p>If you find pollution (e.g., plastic garbage) or invasive species, take photos and mark their positions on the map for later feedback.</p>
+              </section>
             </div>
-          </div>
+          </article>
+
+          <article class="activity4-step-card">
+            <h3 class="activity4-step-heading"><span class="activity4-step-label">Step 5</span><span class="activity4-step-title">Data Measurement and Marking</span></h3>
+            <h4>Data Measurement</h4>
+            <p>Use the tools to measure environmental data correctly:</p>
+            <div class="activity4-recording-table-wrap">
+              <table class="activity4-recording-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Measurement Task</th>
+                    <th>How to Record</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Use a measuring tape to measure the distance between mangrove plants, root length or mudflat thickness at collection points.</td>
+                    <td>Record the numbers clearly.</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Use a water temperature gauge to measure shallow water temperature.</td>
+                    <td>Leave it in water for 1-2 minutes before reading and recording.</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Record other data if needed.</td>
+                    <td>E.g., water clarity.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <h4>Map Marking</h4>
+            <p>After measuring and observing, mark collection points and organism locations on the map with stickers. Write brief notes (e.g., "crabs here, water temp 25℃") and draw the route with colored pens for easy sorting later.</p>
+          </article>
+
+          <article class="activity4-step-card">
+            <h3 class="activity4-step-heading"><span class="activity4-step-label">Step 6</span><span class="activity4-step-title">Museum Visit and Recording</span></h3>
+            <p>At the end of the route, visit the Mangrove Science and Culture Museum. Listen to explanations, look at exhibits, and record key mangrove knowledge (e.g., ecological value, protection methods).</p>
+          </article>
+
+          <article class="activity4-step-card">
+            <h3 class="activity4-step-heading"><span class="activity4-step-label">Step 7</span><span class="activity4-step-title">Data Sorting and Post-processing</span></h3>
+            <p>After returning to school, paste photos on the marked map positions. Sort all data, records and notes to make sure they are complete and clear for later tasks.</p>
+          </article>
         </div>
 
         <div class="safety-warning">
@@ -475,7 +638,15 @@ export const pages = {
           </div>
         </div>
       </div>
+    `
+  },
 
+  'activity4-2': {
+    title: "3.4 Activity 4.2: Coastal Guardians",
+    heroTitle: "Activity 4.2",
+    heroSubtitle: "Coastal Guardians: Digital Investigation Tool",
+    heroImage: "/assets/activity4.png",
+    content: `
       <div class="card glass activity4-tool-card">
         <h3 style="color: var(--mangrove-deep); margin-bottom: 0.85rem;">Digital Investigation Tool</h3>
         <p style="margin-bottom: 0.85rem; color: var(--text-muted);">
