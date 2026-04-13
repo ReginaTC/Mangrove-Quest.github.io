@@ -14,6 +14,22 @@ const PAGE_ORDER = ['home', 'lead-in', 'activity1', 'activity2', 'activity3-1', 
 
 const BASE_URL = import.meta.env.BASE_URL;
 
+function resetPageScrollTop() {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
+function enforceScrollTop(frames = 4) {
+  let remaining = frames;
+  const tick = () => {
+    resetPageScrollTop();
+    remaining -= 1;
+    if (remaining > 0) requestAnimationFrame(tick);
+  };
+  tick();
+}
+
 function resolvePath(path) {
   if (typeof path !== 'string') return path;
   if (path.startsWith('/') && !path.startsWith('//')) {
@@ -768,8 +784,9 @@ function initActivity5() {
     }
   });
 
-  // Reset scroll
-  window.scrollTo(0, 0);
+  // Reset scroll immediately and once more on next frame to avoid hash/focus overrides.
+  resetPageScrollTop();
+  requestAnimationFrame(() => resetPageScrollTop());
 
   // Close nav on navigation
   topNav.classList.add('nav-hidden');
@@ -924,11 +941,17 @@ function initPosterModal() {
 // Handle routing
 function handleRoute() {
   const hash = window.location.hash.substring(1) || 'home';
+  // Guard against browser hash-scroll and history restoration keeping old offset.
+  enforceScrollTop();
   renderPage(hash);
+  enforceScrollTop();
 }
 
 window.addEventListener('hashchange', handleRoute);
 window.addEventListener('load', () => {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
   handleRoute();
   // Start with nav hidden for clean editorial look
   topNav.classList.add('nav-hidden');
