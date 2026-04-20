@@ -10,7 +10,7 @@ const navToggle = document.querySelector('#nav-toggle');
 const actToggle = document.getElementById('act-toggle');
 const actItem = actToggle ? actToggle.closest('.nav-item') : null;
 
-const PAGE_ORDER = ['home', 'lead-in', 'activity1', 'activity2', 'activity3-1', 'activity3-2', 'activity4-1', 'activity4-2', 'activity5', 'activity6', 'rubric', 'reflection'];
+const PAGE_ORDER = ['home', 'lead-in', 'activity1', 'activity2', 'activity3-1', 'activity3-2', 'activity4-1', 'activity4-2', 'activity5', 'activity6', 'rubric', 'reflection', 'theoretical-foundations'];
 
 const BASE_URL = import.meta.env.BASE_URL;
 

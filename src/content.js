@@ -63,6 +63,61 @@ export const pages = {
       </div>
     `
   },
+  'theoretical-foundations': {
+    title: "2. Theoretical Foundations",
+    heroTitle: "Theoretical Foundations",
+    heroSubtitle: "Educational Theories Behind Mangrove Quest",
+    heroImage: "/assets/lead-in.png",
+    content: `
+      <div class="card glass">
+        <p>This website has been designed based on several core educational theories explored in the course PEDU6124. Each section of the mangrove learning journey connects closely with one or more theoretical perspectives, ensuring that students not only acquire ecological knowledge but also develop higher order thinking and digital competence.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>1. TPACK</h2>
+        <p>The design of the learning activities integrates three essential knowledge domains: content knowledge about mangrove ecosystems, pedagogical knowledge of inquiry based and experiential teaching, and technological knowledge of web tools, mobile devices, and AI functions. This integration follows the TPACK framework proposed by Mishra and Koehler. For instance, the ecobottle making activity combines ecological principles, observation based learning, and digital tools such as photo recording and time lapse photography. The result is a coherent technology enhanced learning environment rather than a simple addition of digital elements.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>2. Authentic Learning</h2>
+        <p>All tasks are grounded in real world mangrove environments. Students participate in field investigations, record pollution levels, identify invasive species, map local biodiversity, and visit mangrove museums. These activities allow learners to confront genuine ecological problems instead of dealing with simplified textbook cases. The ecobottle activity further creates a miniature ecosystem where students can observe real biological processes. Such authentic contexts help students see the relevance of their learning and transfer knowledge to new situations.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>3. Experiential Learning and Embodied Cognition</h2>
+        <p>Learning by doing is a central principle of this project. Students engage in hands on operations such as collecting field data, constructing ecobottles, and observing living organisms. According to Kolb's experiential learning theory, knowledge emerges from concrete experience followed by reflection and conceptualisation. Embodied cognition theory adds that our thinking is shaped by physical interactions with the environment. When students touch mangrove soil, track animal movements, or adjust water levels in an ecobottle, their cognitive processes are embedded in those sensory and motor experiences. This deepens both understanding and memory.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>4. Knowledge Building and Inquiry Based Learning</h2>
+        <p>Students are encouraged to act as active knowledge builders rather than passive receivers. They raise their own questions about mangrove ecology, collect evidence during field trips, test their hypotheses, and revise their ideas through discussion. This cycle of cognitive conflict, problem posing, investigation, and refinement follows the knowledge building approach developed by Bereiter and Scardamalia. Through sustained inquiry, learners develop critical thinking, analytical reasoning, and a sense of collective responsibility for advancing the community's understanding.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>5. Computer Supported Collaborative Learning</h2>
+        <p>Many tasks require students to work in groups using digital platforms. For example, teams plan field routes together, share collected data, co construct species distribution maps, and produce joint reports on ecobottle observations. This approach is grounded in computer supported collaborative learning or CSCL theory. Research has shown that CSCL can significantly improve knowledge gain and skill acquisition when students engage in meaningful discussion and shared artifact creation. The digital tools used here facilitate communication, coordination, and mutual feedback, turning individual learning into a collective knowledge building process.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>6. Cognitive Tools and Learner Generated Content</h2>
+        <p>Interactive maps, photo recording applications, and time lapse photography are not just convenient devices. They function as cognitive tools or mindtools, a concept introduced by Jonassen. These tools take over lower level mechanical tasks such as storing information or tracking time, thereby freeing students' mental resources for higher order thinking like interpreting data, generating questions, and forming explanations. Moreover, the platform follows a learner generated content model. Students produce their own observation logs, ecobottles, and time lapse videos. This act of creating external representations enhances reflection, ownership, and the ability to communicate scientific ideas.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>7. Game Based Learning and Gamification</h2>
+        <p>The Role Play Game activity on this website exemplifies how game mechanics can support ecological learning. The design integrates three types of knowledge as follows.</p>
+        <p><strong>From a pedagogical knowledge perspective,</strong> the story based perspective taking method allows students to step into an animal's role. This narrative approach makes abstract behaviours more relatable and memorable.</p>
+        <p><strong>From a technological knowledge perspective,</strong> students must search for real information using search engines or AI tools to make correct decisions during the game. This process builds their digital literacy and responsible use of technology.</p>
+        <p><strong>From a content knowledge perspective,</strong> the game reveals predator prey relationships and food webs within the mangrove ecosystem. Follow up questions after the game help students connect these in game insights to broader ecological structures.</p>
+        <p>The game is also designed to support motivation. Drawing on Self Determination Theory, it provides opportunities for students to feel competent through progressive challenges, autonomous through meaningful choices, and connected to others through post game discussions. Flow theory is considered as well, with tasks calibrated to match students' skill levels so that they remain engaged without becoming frustrated or bored.</p>
+      </div>
+
+      <div class="card glass">
+        <h2>8. Digital Competence and 21st Century Learning</h2>
+        <p>The entire project aligns with internationally recognised frameworks for 21st century education. Students develop the four Cs of collaboration, communication, critical thinking, and creativity. They also build information literacy by evaluating online sources, AI literacy by interacting with generative AI tools, and technical skills by using mobile devices for data collection. These competencies are not taught separately but emerge naturally from meaningful tasks such as field recording, ecobottle documentation, and AI assisted decision making in the role play game. In this way, Mangrove Quest prepares learners not only to understand ecology but also to thrive in a technology rich world.</p>
+      </div>
+    `
+  },
   'lead-in': {
     title: "2. Lead-in",
     heroTitle: "Lead-in",
